@@ -7,6 +7,8 @@ package Presentacio.PartidaView;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,23 +20,82 @@ import javax.swing.JPanel;
 public class Controls extends JPanel{
     public Controls(){
        
-       Fletxa f1 = new Fletxa();
-       Fletxa f2 = new Fletxa();
-       Fletxa f3 = new Fletxa();
-       Fletxa f4 = new Fletxa();
+       Fletxa f1 = new Fletxa(270);
+       Fletxa f2 = new Fletxa(0);
+       Fletxa f3 = new Fletxa(180);
+       Fletxa f4 = new Fletxa(90);
        
-       this.setLayout(new BorderLayout());
+       this.setLayout(new GridBagLayout());
        
-       f1.setHorizontalAlignment(JLabel.CENTER);
-       this.add(f1,BorderLayout.NORTH);
+       //f1.setHorizontalAlignment(JLabel.CENTER);
+       JPanel p = new JPanel();
+       p.setLayout(new GridBagLayout());
+       GridBagLayout g;
+       GridBagConstraints t;
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridx = 0;
+       t.gridy = 1;
+    
+       p.add(f1,t);
        
-       f2.setHorizontalAlignment(JLabel.CENTER);
-       this.add(f2,BorderLayout.SOUTH);
+       //f2.setHorizontalAlignment(JLabel.CENTER);
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridx = 1;
+       t.gridy = 0;
+       p.add(f2,t);
        
-       f3.setVerticalAlignment(JLabel.CENTER);
-       this.add(f3,BorderLayout.EAST);
+       //f3.setVerticalAlignment(JLabel.CENTER);
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridx = 1;
+       t.gridy = 2;
+       p.add(f3,t);
        
-       f4.setVerticalAlignment(JLabel.CENTER);
-       this.add(f4,BorderLayout.WEST);
+       //f4.setVerticalAlignment(JLabel.CENTER);
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;   
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridx = 2;
+       t.gridy = 1;
+       p.add(f4,t);
+       
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;   
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridheight = 1;
+       t.gridwidth = 1;
+       t.gridx = 0;
+       t.gridy = 0;
+       //this.add(new JPanel(),t);
+       
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;   
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridheight = 1;
+       t.gridwidth = 1;
+       t.gridx = 1;
+       t.gridy = 1;
+       this.add(p,t);
+       
+       t = new GridBagConstraints();
+       t.fill = GridBagConstraints.BOTH;   
+       t.weightx = 1;
+       t.weighty = 1;
+       t.gridheight = 2;
+       t.gridwidth = 1;
+       t.gridx = 2;
+       t.gridy = 2;
+       //this.add(new JPanel(),t);
     }
 }

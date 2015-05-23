@@ -17,6 +17,8 @@ import javax.swing.JPanel;
  */
 public class Partida extends javax.swing.JFrame {
 
+    private Tauler Partida;
+
     /**
      * Creates new form Partida
      */
@@ -24,11 +26,14 @@ public class Partida extends javax.swing.JFrame {
         initComponents();
         initOwnComponents();
     }
+    public void SetNumero(int Fila,int Columna,Integer Numero){
+        Partida.SetNumero(Fila, Columna, Numero);
+    }
     
     private void initOwnComponents(){
         setLayout(new BorderLayout());
         
-        Tauler Partida = new Tauler();
+        Partida = new Tauler();
         Controls Botons = new Controls();
       
         
