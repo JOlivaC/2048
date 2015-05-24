@@ -5,6 +5,8 @@
  */
 package Presentacio.PartidaView;
 
+import Presentacio.Comuns.BotoSortir;
+import Presentacio.Comuns.MessageArea;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -31,6 +33,8 @@ public class Partida extends javax.swing.JFrame {
     }
     
     private void initOwnComponents(){
+        this.setTitle("2048");
+        
         setLayout(new BorderLayout());
         
         Partida = new Tauler();
@@ -60,11 +64,10 @@ public class Partida extends javax.swing.JFrame {
                 
         
     
-        JButton Sortir = new JButton("Sortir");
-        
-        
         JPanel Misc = new JPanel();
         Misc.setLayout(new BorderLayout());
+        
+        BotoSortir Sortir = new BotoSortir();
         Misc.add(Sortir,BorderLayout.EAST);
         
         this.add(Misc,BorderLayout.SOUTH);

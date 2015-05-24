@@ -23,6 +23,7 @@ public class Tauler extends JPanel {
         for (int i = 0; i < MatCaselles.length; i ++){
             for (int j = 0; j < MatCaselles[i].length; j++){
                 MatCaselles[i][j] = new Casella();
+                MatCaselles[i][j].setNumero(i * 4 + j);
                 this.add(MatCaselles[i][j]);
             }
         }
