@@ -6,6 +6,8 @@
 package Presentacio.Menus;
 
 import Presentacio.Comuns.BotoOK;
+import Presentacio.Comuns.BotoSortir;
+import Presentacio.Comuns.PanellSeparador;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -19,21 +21,15 @@ import javax.swing.JPanel;
  */
 public class Jugar extends JFrame {
     public Jugar(){
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400,400);
-        this.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 0;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        JButton b = new JButton("Jugar");
-        this.add(b,c);
+        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+        
+        PanellSeparador ps = new PanellSeparador();
 
-        c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 1;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        this.add(new BotoOK(),c);
+        ps.afegir(new JButton("Jugar"));
+        ps.afegir(new BotoSortir());
+        
+        this.add(ps);
         this.pack();
     }
     

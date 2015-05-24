@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentacio.Ranking;
+package Presentacio.RankingView;
 
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;

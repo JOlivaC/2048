@@ -9,6 +9,7 @@ import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.FinestraAmbMsg;
 import Presentacio.Comuns.MessageArea;
+import Presentacio.Comuns.PanellSeparador;
 import Presentacio.Comuns.TextMesCamp;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -48,30 +49,19 @@ public class Login extends FinestraAmbMsg{
         
         this.add(Misc,BorderLayout.SOUTH);
         
-        JPanel Camps = new JPanel();
-        Camps.setLayout(new GridBagLayout());
+        PanellSeparador Camps = new PanellSeparador();
         
         
         UserName = new JTextField();
-        JLabel UserNameText = new JLabel("Usuari: ");
-        
+        JLabel UserNameText = new JLabel("Usuari: ");       
         TextMesCamp User = new TextMesCamp(UserNameText,UserName);
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 0;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        Camps.add(User,c);
+        Camps.afegir(User);
 
         Pass = new JPasswordField();
         JLabel PassText = new JLabel("Password: ");
-        
         TextMesCamp Cont = new TextMesCamp(PassText,Pass);
         
-        c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 1;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        Camps.add(Cont,c);
+        Camps.afegir(Cont);
         
         this.add(Camps,BorderLayout.CENTER);
         this.pack();
