@@ -5,25 +5,24 @@
  */
 package Presentacio.PartidaView;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
+import Presentacio.PartidaView.Fletxa.Fletxa;
+import Presentacio.Controladors.JugarPartidaController.HandleMoure;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import Presentacio.PartidaView.Fletxa.*;
 
 /**
  *
  * @author JOAN
  */
 public class Controls extends JPanel{
-    public Controls(){
+    public Controls(HandleMoure Moure){
        
-       Fletxa f1 = new Fletxa(270);
-       Fletxa f2 = new Fletxa(0);
-       Fletxa f3 = new Fletxa(180);
-       Fletxa f4 = new Fletxa(90);
+       Fletxa f1 = new Esquerra(Moure);
+       Fletxa f2 = new Amunt(Moure);
+       Fletxa f3 = new Avall(Moure);
+       Fletxa f4 = new Dreta(Moure);
        
        this.setLayout(new GridBagLayout());
        

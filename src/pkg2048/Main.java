@@ -5,6 +5,7 @@
  */
 package pkg2048;
 
+import Presentacio.Controladors.JugarPartidaController;
 import Presentacio.PartidaView.Partida;
 
 /**
@@ -17,7 +18,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Partida().setVisible(true);
+        new JugarPartidaController();
     }
     
 }

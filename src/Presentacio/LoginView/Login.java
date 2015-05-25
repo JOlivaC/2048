@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +33,8 @@ public class Login extends FinestraAmbMsg{
     private JTextField UserName;
     private JPasswordField Pass;
     
-    public Login(){
+    public Login(ActionListener OKHandler,ActionListener SortirHandler){
+        
         this.setSize(400,400);
         this.setTitle("Login");
         
@@ -44,8 +46,8 @@ public class Login extends FinestraAmbMsg{
         JPanel Misc = new JPanel();
         Misc.setLayout(new BorderLayout());
         
-        Misc.add(new BotoSortir(),BorderLayout.WEST);
-        Misc.add(new BotoOK(),BorderLayout.EAST);
+        Misc.add(new BotoSortir(SortirHandler),BorderLayout.WEST);
+        Misc.add(new BotoOK(OKHandler),BorderLayout.EAST);
         
         this.add(Misc,BorderLayout.SOUTH);
         
@@ -67,7 +69,15 @@ public class Login extends FinestraAmbMsg{
         this.pack();
     }
     
+    public String getUserName(){
+        return UserName.getText();
+    }
+    
+    public String getPassword(){
+        return String.valueOf(Pass.getPassword());
+    }
+    
     public static void main(String argv[]){
-        new Login().setVisible(true);
+        //new Login().setVisible(true);
     }
 }

@@ -6,9 +6,13 @@
 package Presentacio.PartidaView;
 
 import Presentacio.Comuns.BotoSortir;
+import Presentacio.Comuns.Finestra;
 import Presentacio.Comuns.MessageArea;
+import Presentacio.Controladors.JugarPartidaController;
+import Presentacio.Controladors.JugarPartidaController.HandleMoure;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,7 +21,7 @@ import javax.swing.JPanel;
  *
  * @author JOAN
  */
-public class Partida extends javax.swing.JFrame {
+public class Partida extends Finestra {
 
     private Tauler Partida;
 
@@ -26,19 +30,24 @@ public class Partida extends javax.swing.JFrame {
      */
     public Partida() {
         initComponents();
-        initOwnComponents();
+ 
+    }
+    public Partida(ActionListener TancarHandler,HandleMoure Moure) {
+        initComponents();
+        initOwnComponents(TancarHandler,Moure);
     }
     public void SetNumero(int Fila,int Columna,Integer Numero){
         Partida.SetNumero(Fila, Columna, Numero);
     }
+
     
-    private void initOwnComponents(){
+    private void initOwnComponents(ActionListener TancarHandler,HandleMoure Moure){
         this.setTitle("2048");
         
         setLayout(new BorderLayout());
         
         Partida = new Tauler();
-        Controls Botons = new Controls();
+        Controls Botons = new Controls(Moure);
       
         
         JLabel Puntuacio = new JLabel("Puntuacio: 0");
@@ -67,7 +76,7 @@ public class Partida extends javax.swing.JFrame {
         JPanel Misc = new JPanel();
         Misc.setLayout(new BorderLayout());
         
-        BotoSortir Sortir = new BotoSortir();
+        BotoSortir Sortir = new BotoSortir(TancarHandler);
         Misc.add(Sortir,BorderLayout.EAST);
         
         this.add(Misc,BorderLayout.SOUTH);

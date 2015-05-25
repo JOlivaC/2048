@@ -5,6 +5,8 @@
  */
 package Presentacio.Comuns;
 
+import java.awt.event.ActionListener;
+import java.util.EventListener;
 import javax.swing.JButton;
 
 /**
@@ -14,5 +16,15 @@ import javax.swing.JButton;
 public class BotoOK extends JButton {
     public BotoOK(){
         this.setText("OK");
+    }
+    
+    public BotoOK(ActionListener a){
+        this.setText("OK");
+        this.addActionListener(a);
+    }
+    
+    public BotoOK(String text,ActionListener a){
+        this.setText(text);
+        this.addActionListener(a);
     }
 }

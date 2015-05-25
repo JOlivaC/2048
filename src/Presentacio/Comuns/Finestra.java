@@ -11,10 +11,12 @@ import javax.swing.JFrame;
  *
  * @author JOAN
  */
-public abstract class FinestraAmbMsg extends Finestra {
-    protected MessageArea msg = new MessageArea();
-    public void MostraMsg(String msg){
-        this.msg.SetText(msg);
+public abstract class Finestra extends JFrame {
+    public void Show(){
+        this.setVisible(true);
     }
-    
+    public void tancar(){
+        this.dispose();
+        this.setVisible(false);
+    }
 }

@@ -5,6 +5,7 @@
  */
 package Presentacio.Comuns;
 
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -14,5 +15,10 @@ import javax.swing.JButton;
 public class BotoSortir extends JButton {
     public BotoSortir(){
         this.setText("Sortir");
+    }
+    
+    public BotoSortir(ActionListener l){
+        this.setText("Sortir");
+        this.addActionListener(l);
     }
 }
