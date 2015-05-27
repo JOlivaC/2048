@@ -6,6 +6,7 @@
 package Presentacio.PartidaView.Fletxa;
 
 import Presentacio.Controladors.JugarPartidaController;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -14,9 +15,10 @@ import Presentacio.Controladors.JugarPartidaController;
 public class Esquerra extends Fletxa {
     private static final String TipusMov = "Esquerra";
 
-    public Esquerra(JugarPartidaController.HandleMoure Moure) {
+    public Esquerra(ActionListener Moure[]) {
         super(Moure);
     }
+    
 
     @Override
     public String getTipusMov() {

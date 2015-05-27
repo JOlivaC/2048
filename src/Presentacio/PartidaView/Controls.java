@@ -5,96 +5,86 @@
  */
 package Presentacio.PartidaView;
 
+import Presentacio.Comuns.PanellMatriu;
 import Presentacio.PartidaView.Fletxa.Fletxa;
-import Presentacio.Controladors.JugarPartidaController.HandleMoure;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import Presentacio.PartidaView.Fletxa.*;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author JOAN
  */
 public class Controls extends JPanel{
-    public Controls(HandleMoure Moure){
-       
-       Fletxa f1 = new Esquerra(Moure);
-       Fletxa f2 = new Amunt(Moure);
-       Fletxa f3 = new Avall(Moure);
-       Fletxa f4 = new Dreta(Moure);
-       
-       this.setLayout(new GridBagLayout());
-       
-       //f1.setHorizontalAlignment(JLabel.CENTER);
-       JPanel p = new JPanel();
-       p.setLayout(new GridBagLayout());
-       GridBagLayout g;
-       GridBagConstraints t;
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridx = 0;
-       t.gridy = 1;
+    private Fletxa LastHit;
+    private Fletxa esquerra;
+    private Fletxa amunt;
+    private Fletxa avall;
+    private Fletxa dreta;
     
-       p.add(f1,t);
+    public Controls(ActionListener Moure){
        
-       //f2.setHorizontalAlignment(JLabel.CENTER);
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridx = 1;
-       t.gridy = 0;
-       p.add(f2,t);
+       ActionListener l[] = new ActionListener[2];
+       l[0] = Moure;
        
-       //f3.setVerticalAlignment(JLabel.CENTER);
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridx = 1;
-       t.gridy = 2;
-       p.add(f3,t);
+       l[1] = new MoureEsquerra();
+       esquerra = new Esquerra(l);
        
-       //f4.setVerticalAlignment(JLabel.CENTER);
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;   
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridx = 2;
-       t.gridy = 1;
-       p.add(f4,t);
+       l[1] = new MoureAmunt();
+       amunt = new Amunt(l);
        
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;   
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridheight = 1;
-       t.gridwidth = 1;
-       t.gridx = 0;
-       t.gridy = 0;
-       //this.add(new JPanel(),t);
+       l[1] = new MoureAvall();
+       avall = new Avall(l);
        
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;   
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridheight = 1;
-       t.gridwidth = 1;
-       t.gridx = 1;
-       t.gridy = 1;
-       this.add(p,t);
+       l[1] = new MoureDreta();
+       dreta = new Dreta(l);
        
-       t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;   
-       t.weightx = 1;
-       t.weighty = 1;
-       t.gridheight = 2;
-       t.gridwidth = 1;
-       t.gridx = 2;
-       t.gridy = 2;
-       //this.add(new JPanel(),t);
+       LastHit = null;
+       this.setLayout(new GridLayout());
+       PanellMatriu PM = new PanellMatriu();
+       PM.Add(esquerra,0,1);
+       PM.Add(amunt,1,0);
+       PM.Add(avall,1,2);
+       PM.Add(dreta,2,1);
+       
+       this.add(PM);
+    }
+    
+    public String getTipusMov(){
+        if (LastHit != null){
+            return LastHit.getTipusMov();
+        }
+        else return null;
+    }
+    
+    private class MoureDreta implements ActionListener{
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LastHit = dreta;
+        }  
+    }
+    
+    private class MoureEsquerra implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           LastHit = esquerra;
+        }  
+    }
+    
+    private class MoureAmunt implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           LastHit = amunt;
+        }  
+    }
+    
+    private class MoureAvall implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           LastHit = avall;
+        }  
     }
 }

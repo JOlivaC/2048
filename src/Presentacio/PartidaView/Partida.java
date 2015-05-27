@@ -7,13 +7,10 @@ package Presentacio.PartidaView;
 
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.Finestra;
-import Presentacio.Comuns.MessageArea;
-import Presentacio.Controladors.JugarPartidaController;
-import Presentacio.Controladors.JugarPartidaController.HandleMoure;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,7 +21,7 @@ import javax.swing.JPanel;
 public class Partida extends Finestra {
 
     private Tauler Partida;
-
+    private Controls Botons;
     /**
      * Creates new form Partida
      */
@@ -32,7 +29,7 @@ public class Partida extends Finestra {
         initComponents();
  
     }
-    public Partida(ActionListener TancarHandler,HandleMoure Moure) {
+    public Partida(ActionListener TancarHandler,ActionListener Moure) {
         initComponents();
         initOwnComponents(TancarHandler,Moure);
     }
@@ -41,13 +38,13 @@ public class Partida extends Finestra {
     }
 
     
-    private void initOwnComponents(ActionListener TancarHandler,HandleMoure Moure){
+    private void initOwnComponents(ActionListener TancarHandler,ActionListener Moure){
         this.setTitle("2048");
         
         setLayout(new BorderLayout());
         
         Partida = new Tauler();
-        Controls Botons = new Controls(Moure);
+        Botons = new Controls(Moure);
       
         
         JLabel Puntuacio = new JLabel("Puntuacio: 0");
@@ -85,6 +82,10 @@ public class Partida extends Finestra {
         
         
     
+    }
+    
+    public String getTipusMov(){
+        return Botons.getTipusMov();
     }
 
     /**

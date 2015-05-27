@@ -5,7 +5,7 @@
  */
 package Presentacio.PartidaView.Fletxa;
 
-import Presentacio.Controladors.JugarPartidaController.HandleMoure;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,6 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Polygon;
 import java.awt.Stroke;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -23,14 +24,16 @@ import javax.swing.JLabel;
 public abstract class Fletxa extends JButton {
     private static final Polygon p = CrearFletxa(); 
 
-    public Fletxa(HandleMoure Moure){
-        
-        this.addActionListener(Moure);
-        Moure.setFletxa(this);
+    public Fletxa(ActionListener Moure[]){
+        for (ActionListener l: Moure)
+            this.addActionListener(l);
         this.setLayout(new GridLayout());
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
         this.setOpaque(false);
+    }
+    public void AddHandler(ActionListener l){
+        this.addActionListener(l);
     }
     private void PintarFletxa(Graphics g){
 

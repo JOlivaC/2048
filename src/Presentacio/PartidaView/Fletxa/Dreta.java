@@ -5,16 +5,16 @@
  */
 package Presentacio.PartidaView.Fletxa;
 
-import Presentacio.Controladors.JugarPartidaController;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author JOAN
  */
 public class Dreta extends Fletxa{
-    private static final String TipusMov = "Esquerra";
+    private static final String TipusMov = "Dreta";
 
-    public Dreta(JugarPartidaController.HandleMoure Moure) {
+    public Dreta(ActionListener Moure[]) {
         super(Moure);
     }
 

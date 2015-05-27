@@ -48,7 +48,7 @@ public class JugarPartidaController {
     }
     
     public void PrMoviment(String TipusMov){
-        System.out.print(TipusMov);
+        System.out.print(TipusMov + "\n");
     }
     
     private void MostrarMenu(){
@@ -98,13 +98,9 @@ public class JugarPartidaController {
         
     }
     
-    public class HandleMoure implements ActionListener{
-        private Fletxa raiser;
-        public void addFletxa(Fletxa f){
-            raiser = f;
-        }
+    private class HandleMoure implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            PrMoviment(raiser.getTipusMov());
+            PrMoviment(VistaPartida.getTipusMov());
         } 
     }
 }

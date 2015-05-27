@@ -6,6 +6,7 @@
 package Presentacio.PartidaView.Fletxa;
 
 import Presentacio.Controladors.JugarPartidaController;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -14,7 +15,7 @@ import Presentacio.Controladors.JugarPartidaController;
 public class Amunt extends Fletxa {
     private static final String TipusMov = "Amunt";
     
-    public Amunt(JugarPartidaController.HandleMoure Moure) {
+    public Amunt(ActionListener Moure[]) {
         super(Moure);
     }
 
