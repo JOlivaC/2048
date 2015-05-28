@@ -8,8 +8,9 @@ package Presentacio.Comuns;
 import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import javax.swing.Box;
+import static javax.swing.Box.createVerticalStrut;
 import javax.swing.BoxLayout;
+import static javax.swing.BoxLayout.Y_AXIS;
 import javax.swing.JPanel;
 
 /**
@@ -27,10 +28,10 @@ public class PanellSeparador extends JPanel {
         
         
         Central = new JPanel();
-        l = new BoxLayout(Central,BoxLayout.Y_AXIS);
+        l = new BoxLayout(Central, Y_AXIS);
         Central.setLayout(l);
         this.add(Central);
-        Central.add(Box.createVerticalStrut(Separacio));
+        Central.add(createVerticalStrut(Separacio));
        
     }
    
@@ -39,7 +40,7 @@ public class PanellSeparador extends JPanel {
         JPanel j = new JPanel(new GridLayout());
         j.add(c);
         Central.add(j);
-        Central.add(Box.createVerticalStrut(Separacio));
+        Central.add(createVerticalStrut(Separacio));
 
     }
 }

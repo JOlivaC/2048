@@ -6,7 +6,7 @@
 package Presentacio.RankingView;
 
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
+import static javax.swing.BorderFactory.createTitledBorder;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,7 +21,7 @@ public class TaulaRanking extends JPanel{
     private static final String NomsHeaders[] = {"Nom Jugador","Puntuacio"};
     private JTable taula;
     public TaulaRanking(){
-            Border lineBorder = BorderFactory.createTitledBorder("Ranking");
+            Border lineBorder = createTitledBorder("Ranking");
             this.setBorder(lineBorder);
             this.setOpaque(false);
             taula = new JTable();

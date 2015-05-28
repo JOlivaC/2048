@@ -11,8 +11,13 @@ import Presentacio.Comuns.FinestraAmbMsg;
 import Presentacio.Comuns.PanellSeparador;
 import Presentacio.Comuns.TextMesCamp;
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.EAST;
+import static java.awt.BorderLayout.NORTH;
+import static java.awt.BorderLayout.SOUTH;
+import static java.awt.BorderLayout.WEST;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
+import static java.lang.String.valueOf;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -32,15 +37,15 @@ public class Login extends FinestraAmbMsg{
         this.setTitle("Login");
         this.setLayout(new BorderLayout());
 
-        this.add(msg,BorderLayout.NORTH);
+        this.add(msg, NORTH);
         
         JPanel Misc = new JPanel();
         Misc.setLayout(new BorderLayout());
         
-        Misc.add(new BotoSortir(SortirHandler),BorderLayout.WEST);
-        Misc.add(new BotoOK(OKHandler),BorderLayout.EAST);
+        Misc.add(new BotoSortir(SortirHandler), WEST);
+        Misc.add(new BotoOK(OKHandler), EAST);
         
-        this.add(Misc,BorderLayout.SOUTH);
+        this.add(Misc, SOUTH);
         
         PanellSeparador Camps = new PanellSeparador();
         
@@ -56,7 +61,7 @@ public class Login extends FinestraAmbMsg{
         
         Camps.afegir(Cont);
         
-        this.add(Camps,BorderLayout.CENTER);
+        this.add(Camps, CENTER);
         this.pack();
     }
     
@@ -65,10 +70,8 @@ public class Login extends FinestraAmbMsg{
     }
     
     public String getPassword(){
-        return String.valueOf(Pass.getPassword());
+        return valueOf(Pass.getPassword());
     }
     
-    public static void main(String argv[]){
-        //new Login().setVisible(true);
-    }
+
 }

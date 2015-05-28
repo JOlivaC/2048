@@ -12,8 +12,9 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Polygon;
 import java.awt.event.ActionListener;
+import static java.lang.Math.min;
+import static java.lang.Math.toRadians;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  *
@@ -26,8 +27,8 @@ public abstract class Fletxa extends JButton {
         for (ActionListener l: Moure)
             this.addActionListener(l);
         this.setLayout(new GridLayout());
-        this.setHorizontalAlignment(JLabel.CENTER);
-        this.setVerticalAlignment(JLabel.CENTER);
+        this.setHorizontalAlignment(CENTER);
+        this.setVerticalAlignment(CENTER);
         this.setOpaque(false);
     }
     public void AddHandler(ActionListener l){
@@ -52,13 +53,14 @@ public abstract class Fletxa extends JButton {
         return ret;
     }
     
+    @Override
     public void paint(Graphics g){
             super.paint(g);
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(new Color(0,0,0, (float) 0.5));
-            int min = Math.min(this.getWidth(), this.getHeight());
+            int min = min(this.getWidth(), this.getHeight());
            
-            g2d.rotate(Math.toRadians(getRotacio()),p.getBounds2D().getCenterX(),p.getBounds2D().getCenterY());
+            g2d.rotate(toRadians(getRotacio()),p.getBounds2D().getCenterX(),p.getBounds2D().getCenterY());
             g2d.translate(g2d.getClip().getBounds().getCenterX(), g2d.getClip().getBounds().getCenterY());
             g2d.scale(min / 4, min / 8);
 

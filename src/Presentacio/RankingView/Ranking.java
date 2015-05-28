@@ -9,10 +9,14 @@ import Comunicacio.InfoJugador;
 import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.FinestraAmbMsg;
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.EAST;
+import static java.awt.BorderLayout.NORTH;
+import static java.awt.BorderLayout.SOUTH;
 import java.awt.event.ActionListener;
+import static java.lang.String.valueOf;
 import java.util.Iterator;
 import java.util.SortedSet;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -25,16 +29,16 @@ public class Ranking extends FinestraAmbMsg {
     public Ranking(ActionListener Sortir){
         this.setTitle("Ranking");
         this.setLayout(new BorderLayout());
-        this.add(msg,BorderLayout.NORTH);
+        this.add(msg, NORTH);
         
         BotoOK OK = new BotoOK(Sortir);
         JPanel Sud = new JPanel(new BorderLayout());
-        Sud.add(OK,BorderLayout.EAST);
+        Sud.add(OK, EAST);
         
-        this.add(Sud,BorderLayout.SOUTH);
+        this.add(Sud, SOUTH);
         
         taula = new TaulaRanking();
-        this.add(taula,BorderLayout.CENTER);
+        this.add(taula, CENTER);
         this.pack();
         
     }
@@ -43,11 +47,8 @@ public class Ranking extends FinestraAmbMsg {
         Iterator<InfoJugador> it = info.iterator();
         while (it.hasNext()){
             InfoJugador act = it.next();
-            taula.Insereix(act.Nom, String.valueOf((int)act.Puntuacio));
+            taula.Insereix(act.Nom, valueOf((int)act.Puntuacio));
         }
     }
     
-    public static void main(String argv[]){
-        //new Ranking().setVisible(true);
-    }
 }

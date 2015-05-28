@@ -13,12 +13,9 @@ import Excepcions.pwdIncorrecte;
 import Excepcions.userNameNoExisteix;
 import Excepcions.usuariNoJugador;
 import Presentacio.Menus.VeureRanking;
-import Presentacio.RankingView.Ranking;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.SortedSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -54,7 +51,7 @@ public class JugarPartidaController {
     public void PrSortirLogin(){
         VistaLogin.tancar();
     }
-     public void PrSortirMenu(){
+    public void PrSortirMenu(){
         VistaMenuJugar.tancar();
     }
     
@@ -139,8 +136,7 @@ public class JugarPartidaController {
             PrSortirLogin();
         }
         
-    }
-    
+    }  
     private class HandleJugar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -150,39 +146,40 @@ public class JugarPartidaController {
     }
     private class HandleSortirMenu implements ActionListener{
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             PrSortirMenu();
         }
         
-    }
-    
+    }   
     private class HandleSortirPartida implements ActionListener{
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             PrSortirPartida();
         }
         
-    }
-    
+    }  
     private class HandleMoure implements ActionListener{
+        @Override
         public void actionPerformed(ActionEvent e) {
             PrMoviment(VistaPartida.getTipusMov());
         } 
     }
     private class HandleVeureRanking implements ActionListener{
+        @Override
         public void actionPerformed(ActionEvent e){
             PrVeureRanking();
         }
-    }
-    
+    }   
     private class HandleSortirMenuRanking implements ActionListener{
+        @Override
         public void actionPerformed(ActionEvent e){
             PrFinalitzar();
         }
-    }
-    
-    
+    }     
     private class HandleSortirRanking implements ActionListener{
+        @Override
         public void actionPerformed(ActionEvent e){
             PrOkRanking();
         }

@@ -6,7 +6,7 @@
 package Presentacio.PartidaView;
 
 import Comunicacio.InfoCasella;
-import java.awt.Color;
+import static java.awt.Color.black;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.Set;
@@ -22,11 +22,11 @@ public class Tauler extends JPanel {
     public Tauler(){
         this.setLayout(new GridLayout(4,4));
         MatCaselles = new Casella[4][4];
-        for (int i = 0; i < MatCaselles.length; i ++){
-            for (int j = 0; j < MatCaselles[i].length; j++){
-                MatCaselles[i][j] = new Casella();
+        for (Casella[] MatCaselle : MatCaselles) {
+            for (int j = 0; j < MatCaselle.length; j++) {
+                MatCaselle[j] = new Casella();
                 //MatCaselles[i][j].setNumero(i * 4 + j);
-                this.add(MatCaselles[i][j]);
+                this.add(MatCaselle[j]);
             }
         }
           
@@ -48,9 +48,10 @@ public class Tauler extends JPanel {
         }
     }
     
+    @Override
     public void paint(Graphics g){
         super.paint(g);
-        g.setColor(Color.black);
+        g.setColor(black);
         g.drawRect(0,0,this.getWidth() - 1,this.getHeight() - 1);
     }
 }

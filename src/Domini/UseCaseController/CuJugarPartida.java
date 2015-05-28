@@ -12,6 +12,10 @@ import Excepcions.noHiHaPartides;
 import Excepcions.pwdIncorrecte;
 import Excepcions.userNameNoExisteix;
 import Excepcions.usuariNoJugador;
+import static Stubs.FabricaStubs.Rand;
+import static Stubs.FabricaStubs.StubMoviment;
+import static Stubs.FabricaStubs.StubPartida;
+import static Stubs.FabricaStubs.StubRanking;
 import java.util.SortedSet;
 
 /**
@@ -25,20 +29,20 @@ public class CuJugarPartida {
     public void ferAutenticacio(String userN,String passwd) 
             throws pwdIncorrecte,userNameNoExisteix,usuariNoJugador{
         
-        int raise = Stubs.FabricaStubs.Rand(0, 3);
+        int raise = Rand(0, 3);
         if (raise == 1) throw new pwdIncorrecte();
         else if (raise == 2) throw new userNameNoExisteix();
         else if (raise == 3) throw new usuariNoJugador();
     }
     public InfoPartidaNova crearPartida(){
-        return Stubs.FabricaStubs.StubPartida();
+        return StubPartida();
     }
     public SortedSet<InfoJugador> ObtenirRanking() throws noHiHaPartides{
-        if (Stubs.FabricaStubs.Rand(0,1) == 1) throw new noHiHaPartides();
-        return Stubs.FabricaStubs.StubRanking();
+        if (Rand(0,1) == 1) throw new noHiHaPartides();
+        return StubRanking();
         
     }
     public InfoMoviment ferMoviment(String tipusMov){
-        return Stubs.FabricaStubs.StubMoviment();
+        return StubMoviment();
     }
 }

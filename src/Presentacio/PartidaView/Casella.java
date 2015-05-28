@@ -5,9 +5,11 @@
  */
 package Presentacio.PartidaView;
 
-import java.awt.Color;
+import static java.awt.Color.black;
+import static java.awt.Color.white;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import static java.lang.String.valueOf;
 import javax.swing.JLabel;
 
 /**
@@ -18,8 +20,8 @@ public class Casella extends JLabel {
     private Integer Numero;
     public Casella(){
         this.setLayout(new GridLayout());
-        this.setHorizontalAlignment(JLabel.CENTER);
-        this.setVerticalAlignment(JLabel.CENTER);
+        this.setHorizontalAlignment(CENTER);
+        this.setVerticalAlignment(CENTER);
         this.setOpaque(false);
         Numero = null;
     }
@@ -30,7 +32,7 @@ public class Casella extends JLabel {
             this.setText("");
         }
         else{
-            this.setText(String.valueOf(Numero));
+            this.setText(valueOf(Numero));
         }
     }
     
@@ -39,10 +41,11 @@ public class Casella extends JLabel {
             
         }
     }
+    @Override
     public void paint(Graphics g){
-        g.setColor(Color.white);
+        g.setColor(white);
         g.fillRect(0,0,this.getWidth(),this.getHeight());
-        g.setColor(Color.black);
+        g.setColor(black);
         g.drawRect(0,0,this.getWidth(),this.getHeight());
         super.paint(g);
         

@@ -7,6 +7,7 @@ package Presentacio.Comuns;
 
 import java.awt.Component;
 import java.awt.GridBagConstraints;
+import static java.awt.GridBagConstraints.BOTH;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
@@ -23,7 +24,7 @@ public class PanellMatriu extends JPanel {
     public void Add(Component c,int i,int j){
        GridBagConstraints t;
        t = new GridBagConstraints();
-       t.fill = GridBagConstraints.BOTH;
+       t.fill = BOTH;
        t.weightx = 1;
        t.weighty = 1;
        t.gridx = i;

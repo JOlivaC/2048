@@ -7,9 +7,10 @@ package Presentacio.Comuns;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.BorderFactory;
+import static javax.swing.BorderFactory.createTitledBorder;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import static javax.swing.SwingConstants.CENTER;
 import javax.swing.border.Border;
 
 /**
@@ -21,10 +22,10 @@ public class MessageArea extends JPanel {
     public MessageArea(){
         /*this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);*/
-        Border lineBorder = BorderFactory.createTitledBorder("Missatges");
+        Border lineBorder = createTitledBorder("Missatges");
         Contingut = new JLabel();
-        Contingut.setHorizontalAlignment(JLabel.CENTER);
-        Contingut.setVerticalAlignment(JLabel.CENTER);
+        Contingut.setHorizontalAlignment(CENTER);
+        Contingut.setVerticalAlignment(CENTER);
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.weightx = 1;

@@ -10,7 +10,6 @@ import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.Finestra;
 import Presentacio.Comuns.PanellSeparador;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 
 /**
  *
@@ -19,7 +18,7 @@ import javax.swing.JFrame;
 public class Jugar extends Finestra {
     public Jugar(ActionListener JugarHandler,ActionListener SortirHandler){
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);     
         this.setTitle("Menu");
         PanellSeparador ps = new PanellSeparador();
 
@@ -30,7 +29,5 @@ public class Jugar extends Finestra {
         this.pack();
     }
     
-    public static void main(String argv[]){
-        //new Jugar().setVisible(true);
-    }
+
 }

@@ -8,14 +8,20 @@ package Presentacio.PartidaView;
 import Comunicacio.InfoCasella;
 import Comunicacio.InfoPartidaNova;
 import Presentacio.Comuns.BotoSortir;
-import Presentacio.Comuns.Finestra;
 import Presentacio.Comuns.FinestraAmbMsg;
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.EAST;
+import static java.awt.BorderLayout.SOUTH;
+import static java.awt.EventQueue.invokeLater;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.Set;
+import static java.util.logging.Logger.getLogger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import static javax.swing.UIManager.getInstalledLookAndFeels;
+import static javax.swing.UIManager.setLookAndFeel;
 
 /**
  *
@@ -64,7 +70,7 @@ public class Partida extends FinestraAmbMsg {
         PanellInterior.add(Puntuacio);
         PanellInterior.add(MillorPuntuacio);
         
-        PanellPuntuacio.add(PanellInterior,BorderLayout.CENTER);
+        PanellPuntuacio.add(PanellInterior, CENTER);
         
     
         
@@ -77,10 +83,10 @@ public class Partida extends FinestraAmbMsg {
         JPanel Principal = new JPanel();
         Principal.setLayout(new BorderLayout());
         
-        Principal.add(PanellPuntuacio,BorderLayout.SOUTH);
-        Principal.add(JocIControls,BorderLayout.CENTER);
+        Principal.add(PanellPuntuacio, SOUTH);
+        Principal.add(JocIControls, CENTER);
         
-        this.add(Principal,BorderLayout.CENTER);
+        this.add(Principal, CENTER);
                 
         
     
@@ -88,9 +94,9 @@ public class Partida extends FinestraAmbMsg {
         Misc.setLayout(new BorderLayout());
         
         BotoSortir Sortir = new BotoSortir(TancarHandler);
-        Misc.add(Sortir,BorderLayout.EAST);
+        Misc.add(Sortir, EAST);
         
-        this.add(Misc,BorderLayout.SOUTH);
+        this.add(Misc, SOUTH);
         
         
         
@@ -141,40 +147,11 @@ public class Partida extends FinestraAmbMsg {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Partida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Partida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Partida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Partida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Partida().setVisible(true);
-            }
-        });
+   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
    
-}
+

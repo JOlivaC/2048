@@ -9,6 +9,8 @@ import Comunicacio.InfoCasella;
 import Comunicacio.InfoJugador;
 import Comunicacio.InfoMoviment;
 import Comunicacio.InfoPartidaNova;
+import static java.lang.Math.random;
+import static java.lang.Math.round;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +27,7 @@ public abstract class FabricaStubs {
         ret.caselles = StubCaselles();
         ret.estaAcabada = Rand(0,1) == 1;
         ret.estaGuanyada = Rand(0,1) == 1;
-        ret.puntuacio = Rand(0,10000);
+        ret.puntuacio = Rand(0, 10_000);
         return ret;
     }
     public static SortedSet<InfoJugador> StubRanking(){
@@ -38,7 +40,7 @@ public abstract class FabricaStubs {
          SortedSet<InfoJugador> ret = new TreeSet<>(t); 
         
          
-        int max = 10000;
+        int max = 10_000;
         int over = Rand(1,100);
         for (int i = 0; i < over; i++){      
             ret.add(StubJugador(max));
@@ -79,7 +81,7 @@ public abstract class FabricaStubs {
     }
     
     public static int Rand(int min,int max){
-        double r = Math.random();
-        return (int) (min + Math.round((max - min) * r));
+        double r = random();
+        return (int) (min + round((max - min) * r));
     }
 }
