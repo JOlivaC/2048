@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -32,6 +31,14 @@ public class TaulaRanking extends JPanel{
             JScrollPane scrollPane = new JScrollPane(taula); 
             this.add(scrollPane);
           
+    }
+    
+    public void Insereix(String Nom,String Puntuacio){
+        DefaultTableModel t = (DefaultTableModel)taula.getModel();
+        String[] v = new String[2];
+        v[0] = Nom;
+        v[1] = Puntuacio;
+        t.addRow(v);
     }
     
 

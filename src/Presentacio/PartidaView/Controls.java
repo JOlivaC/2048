@@ -6,12 +6,15 @@
 package Presentacio.PartidaView;
 
 import Presentacio.Comuns.PanellMatriu;
+import Presentacio.PartidaView.Fletxa.Amunt;
+import Presentacio.PartidaView.Fletxa.Avall;
+import Presentacio.PartidaView.Fletxa.Dreta;
+import Presentacio.PartidaView.Fletxa.Esquerra;
 import Presentacio.PartidaView.Fletxa.Fletxa;
-import javax.swing.JPanel;
-import Presentacio.PartidaView.Fletxa.*;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
 
 /**
  *

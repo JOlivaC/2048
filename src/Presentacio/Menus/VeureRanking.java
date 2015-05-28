@@ -5,9 +5,12 @@
  */
 package Presentacio.Menus;
 
+import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.FinestraAmbMsg;
+import Presentacio.Comuns.MessageArea;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,18 +20,16 @@ import javax.swing.JPanel;
  * @author JOAN
  */
 public class VeureRanking extends FinestraAmbMsg{
-    public VeureRanking(){
+    public VeureRanking(ActionListener FinalitzarHandler,ActionListener VeureRanking){
+        this.setTitle("Partida");
         this.setLayout(new BorderLayout());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(msg,BorderLayout.CENTER);
         JPanel Menu = new JPanel(new BorderLayout());
-        Menu.add(new BotoSortir(),BorderLayout.WEST);
-        Menu.add(new JButton("Veure Ranking"),BorderLayout.EAST);
+        Menu.add(new BotoSortir(FinalitzarHandler),BorderLayout.WEST);
+        Menu.add(new BotoOK("Veure Ranking",VeureRanking),BorderLayout.EAST);
         this.add(Menu,BorderLayout.PAGE_END);
         this.pack();
     }
     
-    public static void main(String argv[]){
-        new VeureRanking().setVisible(true);
-    }
+
 }

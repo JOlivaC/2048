@@ -5,13 +5,15 @@
  */
 package Presentacio.RankingView;
 
+import Comunicacio.InfoJugador;
 import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.FinestraAmbMsg;
-import Presentacio.Comuns.MessageArea;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.SortedSet;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 /**
  *
@@ -20,14 +22,12 @@ import javax.swing.SwingConstants;
 public class Ranking extends FinestraAmbMsg {
     private TaulaRanking taula;
 
-    public Ranking(){
-        this.setSize(400,400);
+    public Ranking(ActionListener Sortir){
         this.setTitle("Ranking");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         this.add(msg,BorderLayout.NORTH);
         
-        BotoOK OK = new BotoOK();
+        BotoOK OK = new BotoOK(Sortir);
         JPanel Sud = new JPanel(new BorderLayout());
         Sud.add(OK,BorderLayout.EAST);
         
@@ -39,7 +39,15 @@ public class Ranking extends FinestraAmbMsg {
         
     }
     
+    public void MostrarRanking(SortedSet<InfoJugador> info){
+        Iterator<InfoJugador> it = info.iterator();
+        while (it.hasNext()){
+            InfoJugador act = it.next();
+            taula.Insereix(act.Nom, String.valueOf((int)act.Puntuacio));
+        }
+    }
+    
     public static void main(String argv[]){
-        new Ranking().setVisible(true);
+        //new Ranking().setVisible(true);
     }
 }

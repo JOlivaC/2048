@@ -5,7 +5,6 @@
  */
 package Presentacio.PartidaView.Fletxa;
 
-import Presentacio.Controladors.JugarPartidaController;
 import java.awt.event.ActionListener;
 
 /**

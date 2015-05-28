@@ -9,13 +9,8 @@ import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.Finestra;
 import Presentacio.Comuns.PanellSeparador;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *
@@ -25,7 +20,7 @@ public class Jugar extends Finestra {
     public Jugar(ActionListener JugarHandler,ActionListener SortirHandler){
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
-        
+        this.setTitle("Menu");
         PanellSeparador ps = new PanellSeparador();
 
         ps.afegir(new BotoOK("Jugar",JugarHandler));

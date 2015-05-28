@@ -5,8 +5,6 @@
  */
 package Presentacio.Comuns;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author JOAN
@@ -15,6 +13,7 @@ public abstract class FinestraAmbMsg extends Finestra {
     protected MessageArea msg = new MessageArea();
     public void MostraMsg(String msg){
         this.msg.SetText(msg);
+        this.pack();
     }
     
 }

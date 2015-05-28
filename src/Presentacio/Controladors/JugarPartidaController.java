@@ -5,10 +5,20 @@
  */
 package Presentacio.Controladors;
 
-import Presentacio.PartidaView.Fletxa.Fletxa;
+import Comunicacio.InfoJugador;
+import Comunicacio.InfoMoviment;
+import Comunicacio.InfoPartidaNova;
+import Excepcions.noHiHaPartides;
+import Excepcions.pwdIncorrecte;
+import Excepcions.userNameNoExisteix;
+import Excepcions.usuariNoJugador;
+import Presentacio.Menus.VeureRanking;
+import Presentacio.RankingView.Ranking;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
+import java.util.SortedSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,37 +28,92 @@ public class JugarPartidaController {
     private Presentacio.LoginView.Login VistaLogin;
     private Presentacio.Menus.Jugar VistaMenuJugar;
     private Presentacio.PartidaView.Partida VistaPartida;
+    private Presentacio.RankingView.Ranking VistaRanking;
+    private Domini.UseCaseController.CuJugarPartida CUJugarPartida;
+    private Presentacio.Menus.VeureRanking VistaMenuRanking;
     
     public JugarPartidaController(){
         VistaLogin = new Presentacio.LoginView.Login(new HandleLogin(),new HandleSortirLogin());
         VistaLogin.Show();
+        CUJugarPartida = new Domini.UseCaseController.CuJugarPartida(); 
     }
     public void PrLogin(String UserN,String passwd){
-        VistaLogin.tancar();
-        MostrarMenu();
+        try {
+            CUJugarPartida.ferAutenticacio(UserN, passwd);
+            VistaLogin.tancar();
+            MostrarMenu();
+        } catch (pwdIncorrecte ex) {
+            VistaLogin.MostraMsg("El password es incorrecte");
+        } catch (userNameNoExisteix ex) {
+            VistaLogin.MostraMsg("El username " + UserN + " no es correspon a un jugador");
+        } catch (usuariNoJugador ex) {
+            VistaLogin.MostraMsg("El username " + UserN + " no correspon a un jugador");
+        }
     }
+    
     public void PrSortirLogin(){
         VistaLogin.tancar();
+    }
+     public void PrSortirMenu(){
+        VistaMenuJugar.tancar();
     }
     
     public void PrJugarPartida(){
         VistaMenuJugar.tancar();
-        // Crear Partida
-        //Crear Partida
-        VistaPartida = new Presentacio.PartidaView.Partida(new HandleSortirPartida(),new HandleMoure());
+        InfoPartidaNova infoPN = CUJugarPartida.crearPartida();
+        VistaPartida = new Presentacio.PartidaView.Partida(infoPN,new HandleSortirPartida(),new HandleMoure());
         VistaPartida.Show();
         
     }
-    public void PrSortirMenu(){
-        VistaMenuJugar.tancar();
-    }
+   
     
     public void PrSortirPartida(){
         VistaPartida.tancar();
+ 
+    }
+    
+    public void PrVeureRanking(){
+        VistaMenuRanking.tancar();
+        SortedSet<InfoJugador> infoR;
+        
+        VistaRanking = new  Presentacio.RankingView.Ranking(new HandleSortirRanking());
+        VistaRanking.Show();
+        try {
+            infoR = CUJugarPartida.ObtenirRanking();
+            VistaRanking.MostrarRanking(infoR);
+           
+        } catch (noHiHaPartides ex) {
+            VistaRanking.MostraMsg("No hi ha partides Jugades al sistema");
+        }
+              
+    }
+    
+    public void PrOkRanking(){
+        VistaRanking.tancar();
+        MostrarMenu();
     }
     
     public void PrMoviment(String TipusMov){
-        System.out.print(TipusMov + "\n");
+        InfoMoviment infoM = CUJugarPartida.ferMoviment(TipusMov);
+        VistaPartida.mostrarEstatPartida(infoM.puntuacio, infoM.caselles);
+        if (infoM.estaAcabada){
+            String msg;
+            if (infoM.estaGuanyada) msg = "Partida guanyada! Amb una puntuacio de " + infoM.puntuacio;
+            else msg = "Partida perduda";
+            
+            VistaPartida.tancar();
+            MostrarMenuRanking(msg);
+        }
+    }
+    
+    public void PrFinalitzar(){
+        VistaMenuRanking.tancar();
+    }
+    
+    private void MostrarMenuRanking(String msg){
+        VistaMenuRanking = new VeureRanking(new HandleSortirMenuRanking(),new HandleVeureRanking());
+        VistaMenuRanking.MostraMsg(msg);
+        VistaMenuRanking.Show();
     }
     
     private void MostrarMenu(){
@@ -69,6 +134,7 @@ public class JugarPartidaController {
     }
     private class HandleSortirLogin implements ActionListener{
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             PrSortirLogin();
         }
@@ -102,5 +168,23 @@ public class JugarPartidaController {
         public void actionPerformed(ActionEvent e) {
             PrMoviment(VistaPartida.getTipusMov());
         } 
+    }
+    private class HandleVeureRanking implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            PrVeureRanking();
+        }
+    }
+    
+    private class HandleSortirMenuRanking implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            PrFinalitzar();
+        }
+    }
+    
+    
+    private class HandleSortirRanking implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            PrOkRanking();
+        }
     }
 }

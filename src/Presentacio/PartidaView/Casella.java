@@ -6,7 +6,6 @@
 package Presentacio.PartidaView;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.JLabel;

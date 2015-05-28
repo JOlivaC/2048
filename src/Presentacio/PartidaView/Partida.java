@@ -5,12 +5,15 @@
  */
 package Presentacio.PartidaView;
 
+import Comunicacio.InfoCasella;
+import Comunicacio.InfoPartidaNova;
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.Finestra;
-
+import Presentacio.Comuns.FinestraAmbMsg;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.Set;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,10 +21,12 @@ import javax.swing.JPanel;
  *
  * @author JOAN
  */
-public class Partida extends Finestra {
+public class Partida extends FinestraAmbMsg {
 
     private Tauler Partida;
     private Controls Botons;
+    private JLabel Puntuacio;
+    private JLabel MillorPuntuacio;
     /**
      * Creates new form Partida
      */
@@ -29,16 +34,17 @@ public class Partida extends Finestra {
         initComponents();
  
     }
-    public Partida(ActionListener TancarHandler,ActionListener Moure) {
+    public Partida(InfoPartidaNova infoPN,ActionListener TancarHandler,ActionListener Moure) {
         initComponents();
-        initOwnComponents(TancarHandler,Moure);
+        initOwnComponents(TancarHandler,Moure,infoPN.millorPuntuacioJug);
+        mostrarEstatPartida(infoPN.puntuacio,infoPN.caselles);
     }
     public void SetNumero(int Fila,int Columna,Integer Numero){
         Partida.SetNumero(Fila, Columna, Numero);
     }
 
     
-    private void initOwnComponents(ActionListener TancarHandler,ActionListener Moure){
+    private void initOwnComponents(ActionListener TancarHandler,ActionListener Moure,int MillorP){
         this.setTitle("2048");
         
         setLayout(new BorderLayout());
@@ -47,11 +53,19 @@ public class Partida extends Finestra {
         Botons = new Controls(Moure);
       
         
-        JLabel Puntuacio = new JLabel("Puntuacio: 0");
+        Puntuacio = new JLabel("Puntuacio: 0");
         Puntuacio.setHorizontalAlignment(JLabel.CENTER);
+        MillorPuntuacio = new JLabel("Millor Puntuacio: " + MillorP);
+        MillorPuntuacio.setHorizontalAlignment(JLabel.CENTER);
         JPanel PanellPuntuacio = new JPanel();
         PanellPuntuacio.setLayout(new BorderLayout());
-        PanellPuntuacio.add(Puntuacio,BorderLayout.CENTER);
+        
+        JPanel PanellInterior = new JPanel();
+        PanellInterior.add(Puntuacio);
+        PanellInterior.add(MillorPuntuacio);
+        
+        PanellPuntuacio.add(PanellInterior,BorderLayout.CENTER);
+        
     
         
         JPanel JocIControls = new JPanel();
@@ -82,6 +96,17 @@ public class Partida extends Finestra {
         
         
     
+    }
+    public void Acabar(){
+        
+    }
+    public void mostrarEstatPartida(int puntuacio,Set<InfoCasella> InfoC) {
+        setPuntuacio(puntuacio);
+        Partida.SetCaselles(InfoC);
+    }
+    
+    private void setPuntuacio(int p){
+        Puntuacio.setText("Puntuacio:" + p);
     }
     
     public String getTipusMov(){
@@ -150,4 +175,6 @@ public class Partida extends Finestra {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+   
 }

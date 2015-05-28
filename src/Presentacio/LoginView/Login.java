@@ -8,21 +8,15 @@ package Presentacio.LoginView;
 import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.FinestraAmbMsg;
-import Presentacio.Comuns.MessageArea;
 import Presentacio.Comuns.PanellSeparador;
 import Presentacio.Comuns.TextMesCamp;
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 
 /**
  *
@@ -34,11 +28,8 @@ public class Login extends FinestraAmbMsg{
     private JPasswordField Pass;
     
     public Login(ActionListener OKHandler,ActionListener SortirHandler){
-        
-        this.setSize(400,400);
+
         this.setTitle("Login");
-        
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
         this.add(msg,BorderLayout.NORTH);

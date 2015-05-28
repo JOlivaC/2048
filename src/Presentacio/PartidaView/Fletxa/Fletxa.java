@@ -6,13 +6,11 @@
 package Presentacio.PartidaView.Fletxa;
 
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Polygon;
-import java.awt.Stroke;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;

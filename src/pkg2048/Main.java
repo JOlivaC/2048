@@ -6,7 +6,6 @@
 package pkg2048;
 
 import Presentacio.Controladors.JugarPartidaController;
-import Presentacio.PartidaView.Partida;
 
 /**
  *
