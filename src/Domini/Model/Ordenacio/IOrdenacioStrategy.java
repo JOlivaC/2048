@@ -5,10 +5,15 @@
  */
 package Domini.Model.Ordenacio;
 
+import Comunicacio.InfoJugador;
+import Domini.Model.Jugador;
+import java.util.Set;
+import java.util.SortedSet;
+
 /**
  *
  * @author JOAN
  */
-public class IOrdenacioStrategy {
-    
+public interface IOrdenacioStrategy {
+    public  SortedSet<InfoJugador> ordenarPuntuacio(Set<Jugador> sj);
 }

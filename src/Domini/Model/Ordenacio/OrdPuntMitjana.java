@@ -9,6 +9,6 @@ package Domini.Model.Ordenacio;
  *
  * @author JOAN
  */
-public class OrdPuntMitjana {
+public class OrdPuntMitjana extends OrdenacioStrategy{
     
 }
