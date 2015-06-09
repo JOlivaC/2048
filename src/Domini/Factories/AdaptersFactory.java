@@ -10,5 +10,5 @@ package Domini.Factories;
  * @author JOAN
  */
 public class AdaptersFactory {
-    
+
 }

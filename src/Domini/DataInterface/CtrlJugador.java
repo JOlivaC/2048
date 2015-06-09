@@ -10,5 +10,5 @@ package Domini.DataInterface;
  * @author JOAN
  */
 public class CtrlJugador {
-    
+
 }

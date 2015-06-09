@@ -8,10 +8,12 @@ package Domini.UseCaseController;
 import Comunicacio.InfoJugador;
 import Comunicacio.InfoMoviment;
 import Comunicacio.InfoPartidaNova;
+import Domini.Model.Jugador;
 import Excepcions.noHiHaPartides;
 import Excepcions.pwdIncorrecte;
 import Excepcions.userNameNoExisteix;
 import Excepcions.usuariNoJugador;
+import Presentacio.PartidaView.Partida;
 import static Stubs.FabricaStubs.Rand;
 import static Stubs.FabricaStubs.StubMoviment;
 import static Stubs.FabricaStubs.StubPartida;
@@ -23,6 +25,8 @@ import java.util.SortedSet;
  * @author JOAN
  */
 public class CuJugarPartida {
+    private Partida partida;
+    private Jugador jugador;
     public CuJugarPartida(){
         
     }

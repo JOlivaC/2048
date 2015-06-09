@@ -10,5 +10,7 @@ package Domini.UseCaseController;
  * @author JOAN
  */
 public class CuLogin {
-    
+    public void login(String userN,String passwd){
+        
+    }
 }

@@ -5,10 +5,20 @@
  */
 package Domini.Model;
 
+import Comunicacio.InfoCasella;
+
 /**
  *
  * @author JOAN
  */
 public class Casella {
+    private Integer numero;
+    private int numeroFila;
+    private int numeroColumna;
+    private Partida partida;
     
+    public void initNumero(){}
+    public Integer getNumero(){return null;}
+    public InfoCasella getInfo(){return null;}
+    public boolean teNumero(){return false;}
 }

@@ -10,5 +10,10 @@ package Domini.Model;
  * @author JOAN
  */
 public class UsuariRegistrat {
+    protected String nom;
+    protected String cognom;
+    protected String username;
+    protected String pwd;
     
+    public String getPassword(){return null;}
 }

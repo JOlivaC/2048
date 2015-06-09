@@ -5,10 +5,15 @@
  */
 package Domini.UseCaseController;
 
+import Comunicacio.InfoJugador;
+import java.util.SortedSet;
+
 /**
  *
  * @author JOAN
  */
 public class CuConsultarRanking {
-    
+    public SortedSet<InfoJugador> ConsultarRanking(){
+      return null;  
+    }
 }

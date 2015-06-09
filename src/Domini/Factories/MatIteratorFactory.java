@@ -10,5 +10,7 @@ package Domini.Factories;
  * @author JOAN
  */
 public class MatIteratorFactory {
+    private static MatIteratorFactory instance = new MatIteratorFactory();
+    public static MatIteratorFactory getInstance(){return instance;}
     
 }

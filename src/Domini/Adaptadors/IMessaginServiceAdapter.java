@@ -9,6 +9,6 @@ package Domini.Adaptadors;
  *
  * @author JOAN
  */
-public class IMessaginServiceAdapter {
-    
+public interface IMessaginServiceAdapter {
+    public void enviarMissatge(String email,String msg);
 }

@@ -5,10 +5,18 @@
  */
 package Domini.Model;
 
+import java.util.Set;
+
 /**
  *
  * @author JOAN
  */
-public class Joc2048 {
-    
+public final class Joc2048 {
+    private int idPartida;
+    public int getIdPartida(){
+       return idPartida; 
+    }
+    public void actualitzaIdPartida(){}
+    public void assignaOrdenacioPuntuacio(){}
+    public void OrdenaPerPuntuacio(Set<Jugador> sj){}
 }
