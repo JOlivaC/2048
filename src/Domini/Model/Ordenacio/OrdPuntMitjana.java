@@ -5,10 +5,17 @@
  */
 package Domini.Model.Ordenacio;
 
+import Domini.Model.Jugador;
+
 /**
  *
  * @author JOAN
  */
 public class OrdPuntMitjana extends OrdenacioStrategy{
+
+    @Override
+    protected float ObtenirPuntuacio(Jugador j) {
+        return j.getPuntuacioMitjana();
+    }
     
 }

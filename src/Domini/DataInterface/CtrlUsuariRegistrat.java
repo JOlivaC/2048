@@ -5,10 +5,13 @@
  */
 package Domini.DataInterface;
 
+import Domini.Model.UsuariRegistrat;
+
 /**
  *
  * @author JOAN
  */
-public class CtrlUsuariRegistrat {
-    
+public interface CtrlUsuariRegistrat {
+    public UsuariRegistrat getUsuariRegistrat(String UserN);
+
 }

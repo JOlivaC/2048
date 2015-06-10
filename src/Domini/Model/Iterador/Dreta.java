@@ -1,6 +1,14 @@
 package Domini.Model.Iterador;
 
+import Domini.Model.Casella;
+import java.util.List;
+import java.util.Vector;
+
 public class Dreta extends Horitzontal {
+
+    public Dreta(Vector<Vector<Casella>> c) {
+        super(c);
+    }
 	@Override
 	public boolean segY() {
 		columna --;

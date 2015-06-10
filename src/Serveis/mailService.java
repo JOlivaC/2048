@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Domini.Factories;
+package Serveis;
 
 /**
  *
  * @author JOAN
  */
-public class OrdenacioStartegyFactory {
-    
+public interface mailService {
+    public void enviarMissatge(String email,String msg);
 }

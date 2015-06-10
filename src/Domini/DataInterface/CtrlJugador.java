@@ -5,10 +5,14 @@
  */
 package Domini.DataInterface;
 
+import Domini.Model.Jugador;
+import java.util.Set;
+
 /**
  *
  * @author JOAN
  */
-public class CtrlJugador {
-
+public interface CtrlJugador {
+    public Jugador getJugador(String UserN);
+    public Set<Jugador> getAll();
 }

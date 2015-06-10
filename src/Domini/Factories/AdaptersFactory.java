@@ -5,10 +5,19 @@
  */
 package Domini.Factories;
 
+import Domini.Adaptadors.IMessaginServiceAdapter;
+import Domini.Adaptadors.MessaginServiceAdapter;
+
 /**
  *
  * @author JOAN
  */
 public class AdaptersFactory {
-
+    private static final AdaptersFactory instance = new AdaptersFactory();
+    public static AdaptersFactory getInstance(){return instance;}
+    
+    private final IMessaginServiceAdapter i = new MessaginServiceAdapter();
+    public IMessaginServiceAdapter getMessaginServiceAdapter(){
+        return i;
+    }
 }

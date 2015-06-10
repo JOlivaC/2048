@@ -7,6 +7,7 @@ package Domini.Model.Ordenacio;
 
 import Comunicacio.InfoJugador;
 import Domini.Model.Jugador;
+import Excepcions.noHiHaPartides;
 import java.util.Set;
 import java.util.SortedSet;
 
@@ -15,5 +16,5 @@ import java.util.SortedSet;
  * @author JOAN
  */
 public interface IOrdenacioStrategy {
-    public  SortedSet<InfoJugador> ordenarPuntuacio(Set<Jugador> sj);
+    public  SortedSet<InfoJugador> ordenarPuntuacio(Set<Jugador> sj) throws noHiHaPartides;
 }

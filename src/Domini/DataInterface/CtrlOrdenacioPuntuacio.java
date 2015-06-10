@@ -5,10 +5,13 @@
  */
 package Domini.DataInterface;
 
+import Domini.Factories.OrdenacioStrategyFactory;
+import Domini.Model.Ordenacio.IOrdenacioStrategy;
+
 /**
  *
  * @author JOAN
  */
-public class CtrlOrdenacioPuntuacio {
-    
+public interface CtrlOrdenacioPuntuacio {
+    public IOrdenacioStrategy get();
 }

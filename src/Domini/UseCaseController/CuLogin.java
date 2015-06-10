@@ -5,12 +5,20 @@
  */
 package Domini.UseCaseController;
 
+import Domini.DataInterface.CtrlUsuariRegistrat;
+import Domini.Factories.DataControllerFactory;
+import Domini.Model.UsuariRegistrat;
+import Excepcions.pwdIncorrecte;
+
 /**
  *
  * @author JOAN
  */
 public class CuLogin {
-    public void login(String userN,String passwd){
-        
+    public void login(String userN,String passwd) throws pwdIncorrecte{
+        CtrlUsuariRegistrat cu =  DataControllerFactory.getInstance().getUsuariRegistratController();
+        UsuariRegistrat u = cu.getUsuariRegistrat(userN);
+        String pwd = u.getPassword();
+        if (pwd.compareTo(passwd) != 0) throw new pwdIncorrecte();
     }
 }

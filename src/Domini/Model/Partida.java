@@ -24,6 +24,15 @@ public class Partida {
     private Jugador jugadorPartidaActual;
     private Jugador jugadorPartidaJugada;
     private Set<Casella> casella;
+
+    public Partida(int id, Jugador jugador) {
+        jugadorPartidaActual = jugador;
+        idPartida = id;
+        puntuacio = 0;
+        estaAcabada = false;
+        estaGuanyada = false;
+        this.creaCaselles(this);
+    }
     
     
     private void creaCaselles(Partida p){}
@@ -34,6 +43,8 @@ public class Partida {
     private InfoPartida getInfo(){return null;}
     public InfoPartidaNova getInfoPartidaNova(){return null;}
     private InfoMoviment getInfoMoviment(){return null;}
+    public InfoMoviment realitzaMoviment(String tipusMov){return null;}
+    private void ferMoviment(String tipusMov){}
     public int getPuntuacio(){return 0;}
     private void ferComprovacions(){}
     private void comprovaPartidaGuanyada(){}

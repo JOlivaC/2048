@@ -5,18 +5,38 @@
  */
 package Domini.Model;
 
+import Comunicacio.InfoJugador;
+import Domini.DataInterface.CtrlOrdenacioPuntuacio;
+import Domini.Factories.DataControllerFactory;
+import Domini.Factories.OrdenacioStrategyFactory;
+import Domini.Model.Ordenacio.IOrdenacioStrategy;
+import Excepcions.noHiHaPartides;
 import java.util.Set;
+import java.util.SortedSet;
 
 /**
  *
  * @author JOAN
  */
-public final class Joc2048 {
+public class Joc2048 {
     private int idPartida;
+    private IOrdenacioStrategy Ordenacio;
+    
+    private static Joc2048 instance;
+    public static Joc2048 getInstance(){ return instance;}
+    
+    
     public int getIdPartida(){
        return idPartida; 
     }
-    public void actualitzaIdPartida(){}
-    public void assignaOrdenacioPuntuacio(){}
-    public void OrdenaPerPuntuacio(Set<Jugador> sj){}
+    public void actualitzaIdPartida(){idPartida++;}
+    public void assignaOrdenacioPuntuacio(){
+        CtrlOrdenacioPuntuacio cop = DataControllerFactory.getInstance().getOrdenacioPuntuacioController();
+        IOrdenacioStrategy op = cop.get();
+        if (op == null) op = OrdenacioStrategyFactory.getInstance().creaOrdenacioPuntuacio();
+        Ordenacio = op;
+    }
+    public SortedSet<InfoJugador> OrdenaPerPuntuacio(Set<Jugador> sj) throws noHiHaPartides{
+        return Ordenacio.ordenarPuntuacio(sj);
+    }
 }

@@ -15,5 +15,6 @@ public class UsuariRegistrat {
     protected String username;
     protected String pwd;
     
-    public String getPassword(){return null;}
+    public String getPassword(){return pwd;}
+    public String getUserName(){return username;}
 }

@@ -5,6 +5,8 @@
  */
 package Domini.Adaptadors;
 
+import Domini.Locators.ServiceLocator;
+
 /**
  *
  * @author JOAN
@@ -13,7 +15,7 @@ public class MessaginServiceAdapter implements IMessaginServiceAdapter {
 
     @Override
     public void enviarMissatge(String email, String msg) {
-        
+        ServiceLocator.getInstance().find("ServeiXXXX").enviarMissatge(email, msg);
     }
     
 }

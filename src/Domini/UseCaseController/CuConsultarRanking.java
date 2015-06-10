@@ -6,6 +6,11 @@
 package Domini.UseCaseController;
 
 import Comunicacio.InfoJugador;
+import Domini.DataInterface.CtrlJugador;
+import Domini.Factories.DataControllerFactory;
+import Domini.Model.Joc2048;
+import Domini.Model.Jugador;
+import java.util.Set;
 import java.util.SortedSet;
 
 /**
@@ -14,6 +19,8 @@ import java.util.SortedSet;
  */
 public class CuConsultarRanking {
     public SortedSet<InfoJugador> ConsultarRanking(){
-      return null;  
+        CtrlJugador CJ = DataControllerFactory.getInstance().getJugadorController();
+        Set<Jugador> SJ = CJ.getAll();
+        return Joc2048.getInstance().OrdenaPerPuntuacio(SJ);
     }
 }
