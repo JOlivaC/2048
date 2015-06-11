@@ -22,7 +22,7 @@ public class Joc2048 {
     private int idPartida;
     private IOrdenacioStrategy Ordenacio;
     
-    private static Joc2048 instance;
+    private static Joc2048 instance = new Joc2048();
     public static Joc2048 getInstance(){ return instance;}
     
     

@@ -7,6 +7,7 @@ package Domini.Model;
 
 import Domini.Adaptadors.IMessaginServiceAdapter;
 import Domini.Factories.AdaptersFactory;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,10 +18,11 @@ public class Jugador extends UsuariRegistrat {
     private String email;
     private int millorPuntuacio;
     private Partida PartidaActual;
-    private Set<Partida> PartidaJugada;
+    private Set<Partida> PartidaJugada = new HashSet<>();
+    
     
     public void setPartidaActual(Partida p){PartidaActual = p;}
-    public String getNom(){return this.nom;}
+    public String getNom(){return this.getNom();}
     public int getMillorPuntuacio(){return millorPuntuacio;}
     public float getPuntuacioMitjana(){
         int Total = 0;
@@ -35,13 +37,41 @@ public class Jugador extends UsuariRegistrat {
     public void enviarMissatge(int idPartida,int puntuacio){
         IMessaginServiceAdapter imsa = AdaptersFactory.getInstance().getMessaginServiceAdapter();
         String msg = String.valueOf(idPartida) + "," + String.valueOf(puntuacio);
-        imsa.enviarMissatge(email, msg);
+        imsa.enviarMissatge(getEmail(), msg);
     }
     public void acabarPartida(){
         int puntuacio = PartidaActual.getPuntuacio();
-        if (puntuacio > millorPuntuacio) millorPuntuacio = puntuacio;
+        if (puntuacio > millorPuntuacio) setMillorPuntuacio(puntuacio);
         
         PartidaJugada.add(PartidaActual);
         PartidaActual = null;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @param millorPuntuacio the millorPuntuacio to set
+     */
+    public void setMillorPuntuacio(int millorPuntuacio) {
+        this.millorPuntuacio = millorPuntuacio;
+    }
+
+    /**
+     * @param PartidaJugada the PartidaJugada to set
+     */
+    public void setPartidaJugada(Set<Partida> PartidaJugada) {
+        this.PartidaJugada = PartidaJugada;
     }
 }

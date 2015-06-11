@@ -40,12 +40,6 @@ public class CuJugarPartida {
             
             CtrlJugador cj = DataControllerFactory.getInstance().getJugadorController();
             jugador = cj.getJugador(userN);
-        /* Stub 
-        int raise = Rand(0, 3);
-        if (raise == 1) throw new pwdIncorrecte();
-        else if (raise == 2) throw new userNameNoExisteix();
-        else if (raise == 3) throw new usuariNoJugador();
-        */
         
     }
     public InfoPartidaNova crearPartida(){
@@ -59,17 +53,16 @@ public class CuJugarPartida {
         
         partida = p;
         
-        return p.getInfoPartidaNova();
+        //return p.getInfoPartidaNova();
+        return Stubs.FabricaStubs.StubPartida();
     }
     public SortedSet<InfoJugador> ObtenirRanking() throws noHiHaPartides{
-        /*if (Rand(0,1) == 1) throw new noHiHaPartides();
-        return StubRanking();*/
         
         return new CuConsultarRanking().ConsultarRanking();
         
     }
     public InfoMoviment ferMoviment(String tipusMov){
-        //return StubMoviment();
-        return partida.realitzaMoviment(tipusMov);
+        return StubMoviment();
+        //return partida.realitzaMoviment(tipusMov);
     }
 }

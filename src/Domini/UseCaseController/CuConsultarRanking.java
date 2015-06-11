@@ -10,6 +10,7 @@ import Domini.DataInterface.CtrlJugador;
 import Domini.Factories.DataControllerFactory;
 import Domini.Model.Joc2048;
 import Domini.Model.Jugador;
+import Excepcions.noHiHaPartides;
 import java.util.Set;
 import java.util.SortedSet;
 
@@ -18,7 +19,7 @@ import java.util.SortedSet;
  * @author JOAN
  */
 public class CuConsultarRanking {
-    public SortedSet<InfoJugador> ConsultarRanking(){
+    public SortedSet<InfoJugador> ConsultarRanking() throws noHiHaPartides{
         CtrlJugador CJ = DataControllerFactory.getInstance().getJugadorController();
         Set<Jugador> SJ = CJ.getAll();
         return Joc2048.getInstance().OrdenaPerPuntuacio(SJ);

@@ -10,11 +10,67 @@ package Domini.Model;
  * @author JOAN
  */
 public class UsuariRegistrat {
-    protected String nom;
-    protected String cognom;
-    protected String username;
-    protected String pwd;
+    private String nom;
+    private String cognom;
+    private String username;
+    private String pwd;
     
-    public String getPassword(){return pwd;}
-    public String getUserName(){return username;}
+    public String getPassword(){return getPwd();}
+    public String getUserName(){return getUsername();}
+
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * @return the cognom
+     */
+    public String getCognom() {
+        return cognom;
+    }
+
+    /**
+     * @param cognom the cognom to set
+     */
+    public void setCognom(String cognom) {
+        this.cognom = cognom;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the pwd
+     */
+    public String getPwd() {
+        return pwd;
+    }
+
+    /**
+     * @param pwd the pwd to set
+     */
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 }

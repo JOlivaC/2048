@@ -9,6 +9,9 @@ import Comunicacio.InfoCasella;
 import Comunicacio.InfoJugador;
 import Comunicacio.InfoMoviment;
 import Comunicacio.InfoPartidaNova;
+import Domini.Model.Jugador;
+import Domini.Model.Partida;
+import Domini.Model.UsuariRegistrat;
 import static java.lang.Math.random;
 import static java.lang.Math.round;
 import java.util.Comparator;
@@ -45,6 +48,49 @@ public abstract class FabricaStubs {
         for (int i = 0; i < over; i++){      
             ret.add(StubJugador(max));
             max = (int) ret.last().Puntuacio;
+        }
+        return ret;
+        
+    }
+    public static UsuariRegistrat StubUsuariRegistrat(){
+        UsuariRegistrat u = new UsuariRegistrat();
+        u.setUsername("2048");
+        u.setPwd("2048");
+        return u;
+    }
+    
+    public static Set<Partida> StubPartides(){
+        Set<Partida> ret = new HashSet<>();
+        int i = Rand(0,100);
+        for (int j = 0; j < i; j++){
+            ret.add(StubPartidaReal());
+        }
+        return ret;
+    }
+    
+    public static Jugador StubJugador(){
+        Jugador j = new Jugador();
+        j.setMillorPuntuacio(Rand(1,10000));
+        j.setUsername("manel");
+        j.setPartidaJugada(StubPartides());
+        return j;
+    }
+    public static Partida StubPartidaReal(){
+        Partida p = new Partida(0,null);
+        p.setEstaAcabada(true);
+        p.setPuntuacio(Rand(0,10000));
+        return p;        
+    }
+    public static Set<Jugador> StubRankingDesordenat(){
+       
+        
+         Set<Jugador> ret = new HashSet<>(); 
+        
+         
+        int max = 10_000;
+        int over = Rand(1,100);
+        for (int i = 0; i < over; i++){      
+            ret.add(StubJugador());
         }
         return ret;
         

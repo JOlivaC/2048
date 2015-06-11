@@ -9,13 +9,14 @@ import Domini.DataInterface.CtrlUsuariRegistrat;
 import Domini.Factories.DataControllerFactory;
 import Domini.Model.UsuariRegistrat;
 import Excepcions.pwdIncorrecte;
+import Excepcions.userNameNoExisteix;
 
 /**
  *
  * @author JOAN
  */
 public class CuLogin {
-    public void login(String userN,String passwd) throws pwdIncorrecte{
+    public void login(String userN,String passwd) throws pwdIncorrecte,userNameNoExisteix{
         CtrlUsuariRegistrat cu =  DataControllerFactory.getInstance().getUsuariRegistratController();
         UsuariRegistrat u = cu.getUsuariRegistrat(userN);
         String pwd = u.getPassword();

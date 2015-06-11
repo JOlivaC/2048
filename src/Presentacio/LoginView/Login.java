@@ -62,6 +62,9 @@ public class Login extends FinestraAmbMsg{
         Camps.afegir(Cont);
         
         this.add(Camps, CENTER);
+        
+        UserName.setText("2048");
+        Pass.setText("2048");
         this.pack();
     }
     

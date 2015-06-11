@@ -55,6 +55,27 @@ public class Partida {
     private void mouCasella(Casella c1,Casella c2,boolean sumat){}
     private void moure(Vector<Casella> linea){}
     private void separar(Vector<Vector<Casella>> MatCasella,String TipusMov){}
+
+    /**
+     * @param estaAcabada the estaAcabada to set
+     */
+    public void setEstaAcabada(boolean estaAcabada) {
+        this.estaAcabada = estaAcabada;
+    }
+
+    /**
+     * @param estaGuanyada the estaGuanyada to set
+     */
+    public void setEstaGuanyada(boolean estaGuanyada) {
+        this.estaGuanyada = estaGuanyada;
+    }
+
+    /**
+     * @param puntuacio the puntuacio to set
+     */
+    public void setPuntuacio(int puntuacio) {
+        this.puntuacio = puntuacio;
+    }
     
     
     

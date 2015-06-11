@@ -13,5 +13,5 @@ import Domini.Model.UsuariRegistrat;
  */
 public interface CtrlUsuariRegistrat {
     public UsuariRegistrat getUsuariRegistrat(String UserN);
-
+    
 }
