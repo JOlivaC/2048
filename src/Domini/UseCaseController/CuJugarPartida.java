@@ -28,8 +28,8 @@ import java.util.SortedSet;
  * @author JOAN
  */
 public class CuJugarPartida {
-    private Domini.Model.Partida partida;
-    private Jugador jugador;
+    protected Domini.Model.Partida partida;
+    protected Jugador jugador;
     public CuJugarPartida(){
         
     }
@@ -53,8 +53,8 @@ public class CuJugarPartida {
         
         partida = p;
         
-        //return p.getInfoPartidaNova();
-        return Stubs.FabricaStubs.StubPartida();
+        return p.getInfoPartidaNova();
+        //return Stubs.FabricaStubs.StubPartida();
     }
     public SortedSet<InfoJugador> ObtenirRanking() throws noHiHaPartides{
         
@@ -62,7 +62,7 @@ public class CuJugarPartida {
         
     }
     public InfoMoviment ferMoviment(String tipusMov){
-        return StubMoviment();
-        //return partida.realitzaMoviment(tipusMov);
+        //return StubMoviment();
+        return partida.realitzaMoviment(tipusMov);
     }
 }

@@ -26,7 +26,7 @@ public class JugarPartidaController {
     private Presentacio.Menus.Jugar VistaMenuJugar;
     private Presentacio.PartidaView.Partida VistaPartida;
     private Presentacio.RankingView.Ranking VistaRanking;
-    private Domini.UseCaseController.CuJugarPartida CUJugarPartida;
+    protected Domini.UseCaseController.CuJugarPartida CUJugarPartida;
     private Presentacio.Menus.VeureRanking VistaMenuRanking;
     
     public JugarPartidaController(){

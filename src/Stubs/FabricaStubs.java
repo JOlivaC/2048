@@ -9,6 +9,7 @@ import Comunicacio.InfoCasella;
 import Comunicacio.InfoJugador;
 import Comunicacio.InfoMoviment;
 import Comunicacio.InfoPartidaNova;
+import Domini.Model.Casella;
 import Domini.Model.Jugador;
 import Domini.Model.Partida;
 import Domini.Model.UsuariRegistrat;
@@ -129,5 +130,26 @@ public abstract class FabricaStubs {
     public static int Rand(int min,int max){
         double r = random();
         return (int) (min + round((max - min) * r));
+    }
+    
+    public static Set<Casella> StubCasellesGuanyades(){
+        Set<Casella> ret = new HashSet<>();
+        for (int i = 1; i <= 4; i++) for (int j = 1; j <= 4; j++){
+            Casella c =new Casella(i,j,null);
+            if ((i == 1 || i == 2) && j == 1) c.setNumero(1024);
+            ret.add(c);
+        }
+
+        return ret;
+    }
+    public static Set<Casella> StubCasellesPerdudes(){
+        Set<Casella> ret = new HashSet<>();
+        for (int i = 1; i <= 4; i++) for (int j = 1; j <= 4; j++){
+            Casella c =new Casella(i,j,null);
+            c.setNumero(i * 4 + j);
+            ret.add(c);
+        }
+
+        return ret;
     }
 }

@@ -33,7 +33,7 @@ public class Casella {
     
     public Integer getNumero(){return this.numero;}
     
-    public void setNumero(int numero) {this.numero = numero;}
+    public void setNumero(Integer numero) {this.numero = numero;}
     
     public void  setNumeroBuit() {this.numero = null;}
     
@@ -43,6 +43,12 @@ public class Casella {
     
     public InfoCasella getInfo(){
         return new InfoCasella(this.numeroFila,this.numeroColumna,this.numero);
+    }
+    
+    public boolean MateixNumero(Casella c){
+        int i = this.numero;
+        int j = c.numero;
+        return i == j;
     }
     
     public boolean teNumero(){

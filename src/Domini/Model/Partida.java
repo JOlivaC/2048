@@ -48,21 +48,25 @@ public class Partida {
                 Casella c = new Casella(numFila,numColumna,this);
                 this.casella.add(c);
             }
+        
+        this.setNombreCasellesBuides(2);
     }
     
     private void setNombreCasellesBuides(int quantes){
         List<Casella> casellesBuides = getCasellesSenseNumero();
-        for (int i = 0; i < quantes; ++i) {
-            int index = new Random().nextInt(casellesBuides.size());
-            casellesBuides.get(index).initNumero();
-            casellesBuides.remove(index);
+        if (quantes <= casellesBuides.size()){
+            for (int i = 0; i < quantes; ++i) {
+                int index = new Random().nextInt(casellesBuides.size());
+                casellesBuides.get(index).initNumero();
+                casellesBuides.remove(index);
+            }
         }
     }
     
     private List<Casella> getCasellesSenseNumero(){
         List<Casella> result = new ArrayList();
         for (Casella c: this.casella) {
-            if (c.teNumero()) result.add(c);
+            if (!c.teNumero()) result.add(c);
         }
         return result;
     }
@@ -70,7 +74,7 @@ public class Partida {
     private List<Casella> getCasellesAmbNumero(){
         List<Casella> result = new ArrayList();
         for (Casella c: this.casella) {
-            if (!c.teNumero()) result.add(c);
+            if (c.teNumero()) result.add(c);
         }
         return result;
     }
@@ -107,12 +111,19 @@ public class Partida {
     }
     
     private void ferMoviment(String tipusMov){
-        int punts = 0;
         Casella[][] matCasella = getMatriuCaselles();
-        separar(matCasella,tipusMov);
-        for (Casella[] linea: matCasella) {
-            moure(linea);
+        Set<Vector<Casella>> elements = separar(matCasella,tipusMov);
+        for (Vector<Casella> linea: elements) {
+            
+            moure(toVec(linea));
         }
+    }
+    private static Casella[] toVec(Vector<Casella> in){
+        Casella[] ret = new Casella[in.size()];
+        for (int i = 0; i < in.size(); i ++){
+            ret[i] = in.get(i);
+        }
+        return ret;
     }
     
     public int getPuntuacio(){
@@ -123,6 +134,7 @@ public class Partida {
         comprovaPartidaGuanyada();
         if (this.estaGuanyada) this.jugadorPartidaActual.enviarMissatge(this.idPartida, this.puntuacio);
         else {
+            this.comprovaPartidaPerduda();
             if (this.estaAcabada) finalitzarPartida();
             else preparaSeguentMoviment();
         }
@@ -144,10 +156,10 @@ public class Partida {
             for (int i = 0; i < matCasella.length && !movPossible; ++i) {
                 int j = 0;
                 for (; j < matCasella[0].length && !movPossible; j+=2) {
-                    if ((j-1 > 0) && (matCasella[i][j].getNumero() == matCasella[i][j-1].getNumero())) movPossible = true;
-                    if ((j+1 > 0) && (matCasella[i][j].getNumero() == matCasella[i][j+1].getNumero())) movPossible = true;
-                    if ((i-1 > 0) && (matCasella[i][j].getNumero() == matCasella[i-1][j].getNumero())) movPossible = true;
-                    if ((i+1 > 0) && (matCasella[i][j].getNumero() == matCasella[i+1][j].getNumero())) movPossible = true;
+                    if ((j-1 > 0) && matCasella[i][j].MateixNumero(matCasella[i][j-1])) movPossible = true;
+                    if ((j+1 < matCasella[0].length) && matCasella[i][j].MateixNumero(matCasella[i][j+1])) movPossible = true;
+                    if ((i-1 > 0) && matCasella[i][j].MateixNumero(matCasella[i-1][j])) movPossible = true;
+                    if ((i+1 < matCasella[0].length) && matCasella[i][j].MateixNumero(matCasella[i+1][j])) movPossible = true;
                 }
                 if (colParell) j = 1;
                 else j = 0;
@@ -175,8 +187,10 @@ public class Partida {
     }
     
     private void mouCasella(Casella c1,Casella c2){
-        c2.setNumero(c1.getNumero());
-        c1.setNumeroBuit();
+        Integer i = c1.getNumero();
+        Integer j = c2.getNumero();
+        c1.setNumero(j);
+        c2.setNumero(i);
     }
     
     private void moure(Casella[] linea){
@@ -188,8 +202,8 @@ public class Partida {
                 while (!fi) {
                     if (linea[k].teNumero()) {
                         fi = true;
-                        if ((linea[i].getNumero() == linea[k].getNumero()) && !sumat) {
-                            this.puntuacio = puntuacio + linea[i].getNumero();
+                        if (linea[i].MateixNumero(linea[k]) && !sumat) {
+                            this.puntuacio = puntuacio + linea[i].getNumero() * 2;
                             linea[k].setNumero(linea[k].getNumero()*2);
                             linea[i].setNumeroBuit();
                             sumat = true;
@@ -200,16 +214,19 @@ public class Partida {
                         }
                     }
                     if (!linea[k].teNumero() && k == 0) {
+                        fi = true;
                         mouCasella(linea[i],linea[k]);
                         sumat = false;
                     }
-                    --k;
+                    k--;
                 }
+                
             }
+
         }
     }
     
-    private void separar(Casella[][] matCasella,String tipusMov) {
+    private Set<Vector<Casella>> separar(Casella[][] matCasella,String tipusMov) {
         Vector<Vector<Casella>> matVecCasella = new Vector(4);
         for (int i = 0; i < matCasella.length; ++i) {
             Vector<Casella> colVec = new Vector(4);
@@ -229,12 +246,15 @@ public class Partida {
             while (!fiElements) {
                 Casella cas = myCasMatIterator.getElement();
                 linea.add(i,cas);
+                i++;
                 fiElements = myCasMatIterator.segY();
             }
             myCasMatIterator.primerY();
             fiConjunts = myCasMatIterator.segX();
             ret.add(linea);
         }
+        
+        return ret;
     }
 
     /**
@@ -256,6 +276,10 @@ public class Partida {
      */
     public void setPuntuacio(int puntuacio) {
         this.puntuacio = puntuacio;
+    }
+    
+    public void setCaselles(Set<Casella> sc){
+        this.casella = sc;
     }
     
     

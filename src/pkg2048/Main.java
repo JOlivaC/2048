@@ -6,6 +6,8 @@
 package pkg2048;
 
 import Presentacio.Controladors.JugarPartidaController;
+import Presentacio.Controladors.JugarPartidaControllerPerduda;
+import Presentacio.Controladors.JugarPartidaControllerQuasiGuanyada;
 
 /**
  *
@@ -17,7 +19,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new JugarPartidaController();
+        if (args.length > 0){
+            if (args[0].compareTo("Guanyar") == 0){
+                new JugarPartidaControllerQuasiGuanyada();
+            }
+            else if (args[0].compareTo("Perdre") == 0){
+                new JugarPartidaControllerPerduda();
+            }
+        }
+        else new JugarPartidaController();
     }
     
 }
