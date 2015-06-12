@@ -6,6 +6,7 @@
 package Domini.Model;
 
 import Comunicacio.InfoCasella;
+import java.util.Random;
 
 /**
  *
@@ -17,8 +18,34 @@ public class Casella {
     private int numeroColumna;
     private Partida partida;
     
-    public void initNumero(){}
-    public Integer getNumero(){return null;}
-    public InfoCasella getInfo(){return null;}
-    public boolean teNumero(){return false;}
+    public Casella(int numFila,int numColumna,Partida p){
+        this.numeroFila = numFila;
+        this.numeroColumna = numColumna;
+        this.partida = p;
+        this.numero = null;
+    }
+    
+    public void initNumero(){
+        int num = new Random().nextInt(4) + 1;
+        if (num%2 != 0) ++num;
+        this.numero = num;
+    }
+    
+    public Integer getNumero(){return this.numero;}
+    
+    public void setNumero(int numero) {this.numero = numero;}
+    
+    public void  setNumeroBuit() {this.numero = null;}
+    
+    public Integer getFila(){return this.numeroFila;}
+    
+    public Integer getColumna(){return this.numeroColumna;}
+    
+    public InfoCasella getInfo(){
+        return new InfoCasella(this.numeroFila,this.numeroColumna,this.numero);
+    }
+    
+    public boolean teNumero(){
+        return (this.numero != null);
+    }
 }
