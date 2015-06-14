@@ -8,25 +8,25 @@ package Presentacio.Menus;
 import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
 import Presentacio.Comuns.Finestra;
+import Presentacio.Comuns.PanellContenidor;
 import Presentacio.Comuns.PanellSeparador;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 /**
  *
  * @author JOAN
  */
-public class Jugar extends Finestra {
+public class Jugar extends PanellContenidor {
     public Jugar(ActionListener JugarHandler,ActionListener SortirHandler){
-        
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);     
-        this.setTitle("Menu");
+        this.setLayout(new GridLayout());
         PanellSeparador ps = new PanellSeparador();
 
         ps.afegir(new BotoOK("Jugar",JugarHandler));
         ps.afegir(new BotoSortir(SortirHandler));
         
         this.add(ps);
-        this.pack();
+
     }
     
 
