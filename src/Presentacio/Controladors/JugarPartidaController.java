@@ -12,6 +12,7 @@ import Excepcions.noHiHaPartides;
 import Excepcions.pwdIncorrecte;
 import Excepcions.userNameNoExisteix;
 import Excepcions.usuariNoJugador;
+import Presentacio.Comuns.Finestra;
 import Presentacio.Menus.VeureRanking;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,10 +30,13 @@ public class JugarPartidaController {
     protected Domini.UseCaseController.CuJugarPartida CUJugarPartida;
     private Presentacio.Menus.VeureRanking VistaMenuRanking;
     
+    private Finestra Pare;
     
     public JugarPartidaController(){
+        Pare = new Finestra();
         VistaLogin = new Presentacio.LoginView.Login(new HandleLogin(),new HandleSortirLogin());
         VistaLogin.Show();
+        Pare.CanviarContext("Login", VistaLogin);
         CUJugarPartida = new Domini.UseCaseController.CuJugarPartida(); 
     }
     public void PrLogin(String UserN,String passwd){
@@ -50,23 +54,24 @@ public class JugarPartidaController {
     }
     
     public void PrSortirLogin(){
-        VistaLogin.tancar();
+        Pare.tancar();
     }
     public void PrSortirMenu(){
-        VistaMenuJugar.tancar();
+        Pare.tancar();
     }
     
     public void PrJugarPartida(){
         VistaMenuJugar.tancar();
         InfoPartidaNova infoPN = CUJugarPartida.crearPartida();
         VistaPartida = new Presentacio.PartidaView.Partida(infoPN,new HandleSortirPartida(),new HandleMoure());
+        Pare.CanviarContext("Jugar", VistaPartida);
         VistaPartida.Show();
         
     }
    
     
     public void PrSortirPartida(){
-        VistaPartida.tancar();
+        Pare.tancar();
  
     }
     
@@ -75,6 +80,7 @@ public class JugarPartidaController {
         SortedSet<InfoJugador> infoR;
         
         VistaRanking = new  Presentacio.RankingView.Ranking(new HandleSortirRanking());
+        Pare.CanviarContext("Ranking", VistaRanking);
         VistaRanking.Show();
         try {
             infoR = CUJugarPartida.ObtenirRanking();
@@ -105,18 +111,20 @@ public class JugarPartidaController {
     }
     
     public void PrFinalitzar(){
-        VistaMenuRanking.tancar();
+        Pare.tancar();
     }
     
     private void MostrarMenuRanking(String msg){
         VistaMenuRanking = new VeureRanking(new HandleSortirMenuRanking(),new HandleVeureRanking());
         VistaMenuRanking.MostraMsg(msg);
+        Pare.CanviarContext("Menu", VistaMenuRanking);
         VistaMenuRanking.Show();
     }
     
     private void MostrarMenu(){
         VistaMenuJugar = 
                 new Presentacio.Menus.Jugar(new HandleJugar(),new HandleSortirMenu());
+        Pare.CanviarContext("Menu", VistaMenuJugar);
         VistaMenuJugar.setVisible(true);
         
     }

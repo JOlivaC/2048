@@ -7,7 +7,7 @@ package Presentacio.Menus;
 
 import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
-import Presentacio.Comuns.FinestraAmbMsg;
+import Presentacio.Comuns.PanellAmbMsg;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.EAST;
@@ -20,16 +20,14 @@ import javax.swing.JPanel;
  *
  * @author JOAN
  */
-public class VeureRanking extends FinestraAmbMsg{
+public class VeureRanking extends PanellAmbMsg{
     public VeureRanking(ActionListener FinalitzarHandler,ActionListener VeureRanking){
-        this.setTitle("Partida");
         this.setLayout(new BorderLayout());
         this.add(msg, CENTER);
         JPanel Menu = new JPanel(new BorderLayout());
         Menu.add(new BotoSortir(FinalitzarHandler), WEST);
         Menu.add(new BotoOK("Veure Ranking",VeureRanking), EAST);
         this.add(Menu, PAGE_END);
-        this.pack();
     }
     
 

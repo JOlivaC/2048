@@ -13,13 +13,14 @@ import javax.swing.JFrame;
  *
  * @author JOAN
  */
-public abstract class Finestra extends JFrame {
+public  class Finestra extends JFrame {
     public Finestra(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(new Dimension(400,400));
         this.setPreferredSize(new Dimension(400,400));
         Dimension dim = getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setVisible(true);
     }
     public void Show(){
         this.setVisible(true);
@@ -27,5 +28,12 @@ public abstract class Finestra extends JFrame {
     public void tancar(){
         this.dispose();
         this.setVisible(false);
+    }
+    
+    public void CanviarContext(String titol,PanellContenidor p){
+        this.setPreferredSize(this.getSize());
+        this.setTitle(titol);
+        this.setContentPane(p);
+        this.pack();
     }
 }

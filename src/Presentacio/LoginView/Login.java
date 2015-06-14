@@ -7,7 +7,7 @@ package Presentacio.LoginView;
 
 import Presentacio.Comuns.BotoOK;
 import Presentacio.Comuns.BotoSortir;
-import Presentacio.Comuns.FinestraAmbMsg;
+import Presentacio.Comuns.PanellAmbMsg;
 import Presentacio.Comuns.PanellSeparador;
 import Presentacio.Comuns.TextMesCamp;
 import java.awt.BorderLayout;
@@ -27,14 +27,14 @@ import javax.swing.JTextField;
  *
  * @author JOAN
  */
-public class Login extends FinestraAmbMsg{
+public class Login extends PanellAmbMsg{
 
     private JTextField UserName;
     private JPasswordField Pass;
     
     public Login(ActionListener OKHandler,ActionListener SortirHandler){
 
-        this.setTitle("Login");
+
         this.setLayout(new BorderLayout());
 
         this.add(msg, NORTH);
@@ -65,7 +65,7 @@ public class Login extends FinestraAmbMsg{
         
         UserName.setText("2048");
         Pass.setText("2048");
-        this.pack();
+
     }
     
     public String getUserName(){

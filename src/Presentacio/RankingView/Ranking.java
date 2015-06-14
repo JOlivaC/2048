@@ -7,7 +7,7 @@ package Presentacio.RankingView;
 
 import Comunicacio.InfoJugador;
 import Presentacio.Comuns.BotoOK;
-import Presentacio.Comuns.FinestraAmbMsg;
+import Presentacio.Comuns.PanellAmbMsg;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.CENTER;
 import static java.awt.BorderLayout.EAST;
@@ -23,11 +23,10 @@ import javax.swing.JPanel;
  *
  * @author JOAN
  */
-public class Ranking extends FinestraAmbMsg {
+public class Ranking extends PanellAmbMsg {
     private TaulaRanking taula;
 
     public Ranking(ActionListener Sortir){
-        this.setTitle("Ranking");
         this.setLayout(new BorderLayout());
         this.add(msg, NORTH);
         
@@ -39,7 +38,6 @@ public class Ranking extends FinestraAmbMsg {
         
         taula = new TaulaRanking();
         this.add(taula, CENTER);
-        this.pack();
         
     }
     
