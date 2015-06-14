@@ -36,7 +36,7 @@ public class Jugador extends UsuariRegistrat {
     public boolean AlgunaPartidaJugada(){return !PartidaJugada.isEmpty();}
     public void enviarMissatge(int idPartida,int puntuacio){
         IMessaginServiceAdapter imsa = AdaptersFactory.getInstance().getMessaginServiceAdapter();
-        String msg = String.valueOf(idPartida) + "," + String.valueOf(puntuacio);
+        String msg = "Partida Numero: " + String.valueOf(idPartida) + " Puntuacio: " + String.valueOf(puntuacio);
         imsa.enviarMissatge(getEmail(), msg);
     }
     public void acabarPartida(){

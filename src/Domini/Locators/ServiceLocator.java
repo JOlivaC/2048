@@ -6,6 +6,9 @@
 package Domini.Locators;
 
 import Serveis.mailService;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,16 +17,21 @@ import Serveis.mailService;
 public class ServiceLocator {
     private static ServiceLocator instance = new ServiceLocator();
     public static ServiceLocator getInstance(){return instance;}
-    
+    private static final String DEFAULT_IP = "localhost";
+    private static final int DEFAULT_Port = 1234;
     public mailService find(String nom){
-        return new mailService() {
-
-            @Override
-            public void enviarMissatge(String email, String msg) {
-                
-            }
-        };
+        String IP;
+        int Port;
+        LocatorReader LR = new LocatorReader();
+        try {
+            LR.Read();
+            IP = LR.getIP();
+            Port = LR.getPort();
+        } catch (IOException ex) {
+            IP = DEFAULT_IP;
+            Port = DEFAULT_Port;
+        }
+        return new mailService(IP,Port);
     }
     
-
 }
