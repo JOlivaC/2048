@@ -7,6 +7,7 @@ package Presentacio.PartidaView;
 
 import static java.awt.Color.black;
 import static java.awt.Color.white;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import static java.lang.String.valueOf;
@@ -22,6 +23,9 @@ public class Casella extends JLabel {
         this.setLayout(new GridLayout());
         this.setHorizontalAlignment(CENTER);
         this.setVerticalAlignment(CENTER);
+        Font f = new Font("Courier",Font.BOLD,20);
+        
+        this.setFont(f);
         this.setOpaque(false);
         Numero = null;
     }

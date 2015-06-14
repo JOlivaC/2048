@@ -29,6 +29,7 @@ public class JugarPartidaController {
     protected Domini.UseCaseController.CuJugarPartida CUJugarPartida;
     private Presentacio.Menus.VeureRanking VistaMenuRanking;
     
+    
     public JugarPartidaController(){
         VistaLogin = new Presentacio.LoginView.Login(new HandleLogin(),new HandleSortirLogin());
         VistaLogin.Show();
