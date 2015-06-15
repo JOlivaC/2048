@@ -74,6 +74,7 @@ public abstract class FabricaStubs {
         j.setMillorPuntuacio(Rand(1,10000));
         j.setUsername("manel");
         j.setPartidaJugada(StubPartides());
+        j.setEmail("victor.dube@gmail.com");
         return j;
     }
     public static Partida StubPartidaReal(){
