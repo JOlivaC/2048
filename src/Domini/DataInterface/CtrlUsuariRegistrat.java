@@ -6,12 +6,13 @@
 package Domini.DataInterface;
 
 import Domini.Model.UsuariRegistrat;
+import Excepcions.userNameNoExisteix;
 
 /**
  *
  * @author JOAN
  */
 public interface CtrlUsuariRegistrat {
-    public UsuariRegistrat getUsuariRegistrat(String UserN);
+    public UsuariRegistrat getUsuariRegistrat(String UserN) throws userNameNoExisteix;
     
 }
