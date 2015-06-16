@@ -79,7 +79,6 @@ public class Partida {
         return result;
     }
     
-    /* Canviat el tipus per array de java */
     public Casella[][] getMatriuCaselles(){
         Casella[][] result = new Casella[4][4];
         for (Casella c: this.casella) {
@@ -119,7 +118,6 @@ public class Partida {
             moure(toVec(linea));
         }
     }
-    /* Operacio d'ajuda per transformar Vector a array */
     private static Casella[] toVec(Vector<Casella> in){
         Casella[] ret = new Casella[in.size()];
         for (int i = 0; i < in.size(); i ++){
@@ -230,7 +228,6 @@ public class Partida {
     
     private Set<Vector<Casella>> separar(Casella[][] matCasella,String tipusMov) {
         Vector<Vector<Casella>> matVecCasella = new Vector(4);
-        /* Transformar Array a tipus de retorn */
         for (int i = 0; i < matCasella.length; ++i) {
             Vector<Casella> colVec = new Vector(4);
             for (int j = 0; j < matCasella[0].length; ++j) {

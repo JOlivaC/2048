@@ -30,9 +30,6 @@ public class JugarPartidaController {
     protected Domini.UseCaseController.CuJugarPartida CUJugarPartida;
     private Presentacio.Menus.VeureRanking VistaMenuRanking;
     
-    /* Canviada l'estructura de les finestres, utilitzem una finestra única (Pare) i dins seu modifiquem el panell principal
-    Les vistes de la pràctica són ara Panells que van canviant dins de la finestra Pare
-    */
     private Finestra Pare;
     
     public JugarPartidaController(){

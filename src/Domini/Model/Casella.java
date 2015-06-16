@@ -44,7 +44,7 @@ public class Casella {
     public InfoCasella getInfo(){
         return new InfoCasella(this.numeroFila,this.numeroColumna,this.numero);
     }
-    /* operacio delegada per comprovar si dues caselles tenen el mateix numero */
+    
     public boolean MateixNumero(Casella c){
         int i = this.numero;
         int j = c.numero;
