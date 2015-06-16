@@ -1,0 +1,221 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.4.4
+-- Dumped by pg_dump version 9.4.4
+-- Started on 2015-06-16 01:33:17
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 176 (class 3079 OID 11855)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2026 (class 0 OID 0)
+-- Dependencies: 176
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 175 (class 1259 OID 16415)
+-- Name: casella; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE casella (
+    idpartida integer NOT NULL,
+    numerofila integer NOT NULL,
+    numerocolumna integer NOT NULL,
+    numero integer
+);
+
+
+ALTER TABLE casella OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 16402)
+-- Name: jugador; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE jugador (
+    email text NOT NULL,
+    millorpuntuacio integer,
+    username text NOT NULL
+);
+
+
+ALTER TABLE jugador OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 16410)
+-- Name: partida; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE partida (
+    idpartida integer NOT NULL,
+    estaacabada boolean,
+    estaguanyada boolean,
+    puntuacio integer,
+    jugador text
+);
+
+
+ALTER TABLE partida OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 16394)
+-- Name: usuariregistrat; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuariregistrat (
+    nom text,
+    cognom text,
+    username text NOT NULL,
+    pwd text
+);
+
+
+ALTER TABLE usuariregistrat OWNER TO postgres;
+
+--
+-- TOC entry 2018 (class 0 OID 16415)
+-- Dependencies: 175
+-- Data for Name: casella; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY casella (idpartida, numerofila, numerocolumna, numero) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2016 (class 0 OID 16402)
+-- Dependencies: 173
+-- Data for Name: jugador; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY jugador (email, millorpuntuacio, username) FROM stdin;
+javigarate7@gmail.com	3	2048
+\.
+
+
+--
+-- TOC entry 2017 (class 0 OID 16410)
+-- Dependencies: 174
+-- Data for Name: partida; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY partida (idpartida, estaacabada, estaguanyada, puntuacio, jugador) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2015 (class 0 OID 16394)
+-- Dependencies: 172
+-- Data for Name: usuariregistrat; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuariregistrat (nom, cognom, username, pwd) FROM stdin;
+javi	garate	2048	2048
+\.
+
+
+--
+-- TOC entry 1903 (class 2606 OID 16419)
+-- Name: casella_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY casella
+    ADD CONSTRAINT casella_pkey PRIMARY KEY (idpartida, numerofila, numerocolumna);
+
+
+--
+-- TOC entry 1897 (class 2606 OID 16441)
+-- Name: jugador_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY jugador
+    ADD CONSTRAINT jugador_email_key UNIQUE (email);
+
+
+--
+-- TOC entry 1899 (class 2606 OID 16434)
+-- Name: jugador_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY jugador
+    ADD CONSTRAINT jugador_pkey PRIMARY KEY (username);
+
+
+--
+-- TOC entry 1901 (class 2606 OID 16414)
+-- Name: partida_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY partida
+    ADD CONSTRAINT partida_pkey PRIMARY KEY (idpartida);
+
+
+--
+-- TOC entry 1895 (class 2606 OID 16401)
+-- Name: usuariregistrat_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuariregistrat
+    ADD CONSTRAINT usuariregistrat_pkey PRIMARY KEY (username);
+
+
+--
+-- TOC entry 1905 (class 2606 OID 16420)
+-- Name: casella_idpartida_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY casella
+    ADD CONSTRAINT casella_idpartida_fkey FOREIGN KEY (idpartida) REFERENCES partida(idpartida);
+
+
+--
+-- TOC entry 1904 (class 2606 OID 16435)
+-- Name: jugador_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY jugador
+    ADD CONSTRAINT jugador_username_fkey FOREIGN KEY (username) REFERENCES usuariregistrat(username);
+
+
+--
+-- TOC entry 2025 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-06-16 01:33:18
+
+--
+-- PostgreSQL database dump complete
+--
+
